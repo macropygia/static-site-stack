@@ -31,7 +31,7 @@ export default defineConfig({
 ### buildOptions
 
 - Required: `false`
-- Type: `object`;
+- Type: `object`
 - Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
 
 ビルド時に使用する Pug のオプション。
@@ -39,7 +39,7 @@ export default defineConfig({
 ### serveOptions
 
 - Required: `false`
-- Type: `object`;
+- Type: `object`
 - Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
 
 開発サーバで使用する Pug のオプション。
@@ -47,14 +47,14 @@ export default defineConfig({
 ### locals
 
 - Required: `false`
-- Type: `object`;
+- Type: `object`
 
 Pug のコンパイル時に注入する locals オブジェクト。
 
 ### ignorePattern
 
 - Required: `false`
-- Type: `string | string[]`;
+- Type: `string | string[]`
 - Ref. [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
 
 開発サーバ上で処理対象から除外するパターン。なお `vite-plugin-inpsect` には標準で対応している。

@@ -4,7 +4,7 @@
   "description": "Vite plugin to add files using fast-glob to build.rollupOptions.input.",
   "author": "macropygia",
   "license": "MIT",
-  "homepage": "https://github.com/macropygia/static-site-stack",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/vite-plugin-glob-input#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/macropygia/static-site-stack.git",

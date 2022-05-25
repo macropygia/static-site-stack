@@ -4,7 +4,7 @@
   "description": "Vite plugin to serve multiple Pug as HTML with middleware and build to static HTML.",
   "author": "macropygia",
   "license": "MIT",
-  "homepage": "https://github.com/macropygia/static-site-stack",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/vite-plugin-pug-static#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/macropygia/static-site-stack.git",

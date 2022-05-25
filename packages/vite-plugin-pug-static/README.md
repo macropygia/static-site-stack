@@ -28,7 +28,7 @@ export default defineConfig({
 ### buildOptions
 
 - Required: `false`
-- Type: `object`;
+- Type: `object`
 - Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
 
 Pug options for build.
@@ -36,7 +36,7 @@ Pug options for build.
 ### serveOptions
 
 - Required: `false`
-- Type: `object`;
+- Type: `object`
 - Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
 
 Pug options for dev server.
@@ -44,14 +44,14 @@ Pug options for dev server.
 ### locals
 
 - Required: `false`
-- Type: `object`;
+- Type: `object`
 
 The locals object of pug.
 
 ### ignorePattern
 
 - Required: `false`
-- Type: `string | string[]`;
+- Type: `string | string[]`
 - Ref. [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
 
 Ignore pattern for dev server. Compatible with `vite-plugin-inpsect` by default.
