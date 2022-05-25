@@ -19,7 +19,7 @@ fast-glob の結果を `build.rollupOptions.input` に注入する Vite プラ�
 ```js
 // vite.config.js
 import { defineConfig } from "vite";
-import vitePluginGlobInput from "vite-plugin-glob-input";
+import vitePluginGlobInput from "@macropygia/vite-plugin-glob-input";
 
 export 初期値 defineConfig({
   plugins: [

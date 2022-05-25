@@ -19,7 +19,7 @@ Vite plugin to add files using fast-glob to `build.rollupOptions.input`
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginGlobInput from 'vite-plugin-glob-input'
+import vitePluginGlobInput from '@macropygia/vite-plugin-glob-input'
 
 export default defineConfig({
   plugins: [

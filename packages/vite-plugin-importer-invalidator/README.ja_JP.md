@@ -4,6 +4,7 @@
 
 特定のファイルが更新されるとそのファイルに依存している全てのファイルをリロード対象にする Vite プラグイン
 
+- 従来型静的 Web サイト向け
 - 開発サーバ上で動作
 - 対象ファイルのモジュールに依存関係が格納されている必要がある
     - ここでいう「モジュール」とは Vite の HMR におけるモジュールを指す
@@ -13,7 +14,7 @@
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginImporterInvalidator from 'vite-plugin-importer-invalidator'
+import vitePluginImporterInvalidator from '@macropygia/vite-plugin-importer-invalidator'
 
 export default defineConfig({
   plugins: [
@@ -31,7 +32,7 @@ export default defineConfig({
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginImporterInvalidator from 'vite-plugin-importer-invalidator'
+import vitePluginImporterInvalidator from '@macropygia/vite-plugin-importer-invalidator'
 
 export default defineConfig({
   plugins: [

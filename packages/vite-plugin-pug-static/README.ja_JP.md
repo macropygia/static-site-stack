@@ -15,7 +15,7 @@
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginPugStatic from 'vite-plugin-pug-static'
+import vitePluginPugStatic from '@macropygia/vite-plugin-pug-static'
 
 export default defineConfig({
   plugins: [

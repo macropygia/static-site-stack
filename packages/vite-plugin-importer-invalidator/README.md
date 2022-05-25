@@ -4,6 +4,7 @@
 
 Vite plugin to invalidate importers when the target file is updated.
 
+- Suitable for a traditional static site
 - Works on dev server
 - The module of the target file must have its importers.
     - The "module" here is the module in HMR of Vite.
@@ -13,7 +14,7 @@ Vite plugin to invalidate importers when the target file is updated.
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginImporterInvalidator from 'vite-plugin-importer-invalidator'
+import vitePluginImporterInvalidator from '@macropygia/vite-plugin-importer-invalidator'
 
 export default defineConfig({
   plugins: [
@@ -31,7 +32,7 @@ Invalidate SCSS files when imported partial is updated.
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginImporterInvalidator from 'vite-plugin-importer-invalidator'
+import vitePluginImporterInvalidator from '@macropygia/vite-plugin-importer-invalidator'
 
 export default defineConfig({
   plugins: [

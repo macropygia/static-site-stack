@@ -5,15 +5,14 @@
 Vite plugin to serve multiple Pug as HTML with middleware and build to static HTML.
 
 - Suitable for a traditional static site
-- Currently, full-reload is always triggered when any file is modified.
-- `/**/` and `**/*.html`
+- Currently, full-reload is always triggered when any file is modified
 
 ## Usage
 
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import vitePluginPugStatic from 'vite-plugin-pug-static'
+import vitePluginPugStatic from '@macropygia/vite-plugin-pug-static'
 
 export default defineConfig({
   plugins: [
