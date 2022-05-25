@@ -1,0 +1,39 @@
+{
+  "name": "@macropygia/vite-plugin-glob-input",
+  "version": "0.0.1",
+  "description": "Vite plugin to add files using fast-glob to build.rollupOptions.input.",
+  "author": "macropygia",
+  "license": "MIT",
+  "homepage": "https://github.com/macropygia/sitatic-site-stack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macropygia/sitatic-site-stack.git",
+    "directory": "packages/vite-plugin-glob-input"
+  },
+  "bugs": {
+    "url": "https://github.com/macropygia/sitatic-site-stack/issue"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "static",
+    "glob"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "type-check": "tsc --noEmit -p .",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
+    "build": "pnpm clean && pnpm tsup",
+    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.11",
+    "vite": "^2.9.9"
+  }
+}

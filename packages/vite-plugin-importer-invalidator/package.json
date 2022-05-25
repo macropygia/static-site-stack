@@ -1,0 +1,41 @@
+{
+  "name": "@macropygia/vite-plugin-importer-invalidator",
+  "version": "0.0.1",
+  "description": "Vite plugin to invalidate importers when the target file is updated.",
+  "author": "macropygia",
+  "license": "MIT",
+  "homepage": "https://github.com/macropygia/sitatic-site-stack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macropygia/sitatic-site-stack.git",
+    "directory": "packages/vite-plugin-importer-invalidator"
+  },
+  "bugs": {
+    "url": "https://github.com/macropygia/sitatic-site-stack/issue"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "static",
+    "sass",
+    "scss"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "type-check": "tsc --noEmit -p .",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
+    "build": "pnpm clean && pnpm tsup",
+    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
+  },
+  "dependencies": {
+    "@types/picomatch": "^2.3.0",
+    "picomatch": "^2.3.1",
+    "vite": "^2.9.9"
+  }
+}

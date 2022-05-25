@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+    {
+      "path": "packages/vite-plugin-pug-static",
+      "name": "vite-plugin-pug-static"
+    },
+    {
+      "path": "packages/vite-plugin-glob-input",
+      "name": "vite-plugin-glob-input"
+    },
+    {
+      "path": "packages/vite-plugin-importer-invalidator",
+      "name": "vite-plugin-importer-invalidator"
+    },
+  ],
+  "settings": {
+    "files.excludeGitIgnore": false,
+    "files.exclude": {
+      "packages": true,
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/*debug.log": true,
+      "**/*error.log": true
+    }
+  }
+}
