@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-importer-invalidator
 
+## 0.0.4
+
+### Patch Changes
+
+- Chore
+
 ## 0.0.3
 
 ### Patch Changes
