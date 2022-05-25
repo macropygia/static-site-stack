@@ -1,17 +1,17 @@
 {
   "name": "@macropygia/vite-plugin-pug-static",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vite plugin to serve multiple Pug as HTML with middleware and build to static HTML.",
   "author": "macropygia",
   "license": "MIT",
-  "homepage": "https://github.com/macropygia/sitatic-site-stack",
+  "homepage": "https://github.com/macropygia/static-site-stack",
   "repository": {
     "type": "git",
-    "url": "https://github.com/macropygia/sitatic-site-stack.git",
+    "url": "https://github.com/macropygia/static-site-stack.git",
     "directory": "packages/vite-plugin-pug-static"
   },
   "bugs": {
-    "url": "https://github.com/macropygia/sitatic-site-stack/issue"
+    "url": "https://github.com/macropygia/static-site-stack/issue"
   },
   "keywords": [
     "vite",

@@ -1,6 +1,6 @@
 # @macropygia/vite-plugin-importer-invalidator
 
-**English** | [日本語](README.ja.md)
+**English** | [日本語](README.ja_JP.md)
 
 Vite plugin to invalidate importers when the target file is updated.
 
