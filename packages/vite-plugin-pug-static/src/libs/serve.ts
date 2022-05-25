@@ -12,9 +12,14 @@ const transformPugToHtml = (
   options?: Pug.Options,
   locals?: Pug.LocalsObject
 ) => {
-  const compiledTemplate = compileFile(path, options);
-  const html = compiledTemplate(locals);
-  return server.transformIndexHtml(path, html);
+  try {
+    const compiledTemplate = compileFile(path, options);
+    const html = compiledTemplate(locals);
+    return server.transformIndexHtml(path, html);
+  } catch (err: any) {
+    console.error(err.message);
+    return server.transformIndexHtml(path, `<pre>${err.message}</pre>`);
+  }
 };
 
 export const vitePluginPugServe = (
