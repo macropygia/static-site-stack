@@ -1,4 +1,5 @@
 import fs from 'fs';
+
 import type Pug from 'pug';
 import { compileFile } from 'pug';
 import type { Plugin, ViteDevServer } from 'vite';

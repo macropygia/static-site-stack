@@ -1,6 +1,7 @@
 import path from 'path';
+
 import type FastGlob from 'fast-glob';
-import fg from 'fast-glob';
+import { sync } from 'fast-glob';
 import type { Plugin, ResolvedConfig } from 'vite';
 
 interface Settings {
@@ -54,7 +55,7 @@ const vitePluginGlobInput = (userSettings: UserSettings): Plugin => {
         ...settings.options,
         ...requiredFgOptions,
       };
-      const targets = fg.sync(settings.patterns, fgOptions);
+      const targets = sync(settings.patterns, fgOptions);
       let { input } = options;
 
       // If input is not set, respect disableAlias.

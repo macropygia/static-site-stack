@@ -1,5 +1,6 @@
 import type Pug from 'pug';
 import type Picomatch from 'picomatch';
+
 import { vitePluginPugBuild } from './libs/build.js';
 import { vitePluginPugServe } from './libs/serve.js';
 

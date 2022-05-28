@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+
 import type Pug from 'pug';
 import { compileFile, LocalsObject } from 'pug';
 import type { Plugin } from 'vite';

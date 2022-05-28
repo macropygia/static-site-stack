@@ -8,12 +8,24 @@ module.exports = defineConfig({
   },
   extends: [
     'eslint:recommended',
-    'plugin:n/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
+    'plugin:n/recommended',
     'prettier',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
+  },
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: 'packages/*/tsconfig.json',
+      },
+    },
   },
   rules: {
     // ref. https://github.com/weiran-zsd/eslint-plugin-node#readme
@@ -29,5 +41,9 @@ module.exports = defineConfig({
     // loosen
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
+    // eslint-plugin-import
+    'import/order': ['error', { 'newlines-between': 'always' }],
+    // eslint-import-resolver-typescript
+    'import/no-unresolved': 'error',
   },
 });

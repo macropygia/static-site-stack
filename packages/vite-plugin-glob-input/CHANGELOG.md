@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.5
+
+### Patch Changes
+
+- Support ESM/CJS dual package
+
 ## 0.0.4
 
 ### Patch Changes

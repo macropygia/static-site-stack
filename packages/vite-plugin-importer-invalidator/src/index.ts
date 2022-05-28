@@ -1,4 +1,5 @@
 import path from 'path';
+
 import type { Plugin } from 'vite';
 import type Picomatch from 'picomatch';
 import picomatch from 'picomatch';
