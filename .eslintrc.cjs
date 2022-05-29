@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires, n/no-unpublished-require */
-const { defineConfig } = require('eslint-define-config');
+const { defineConfig } = require('eslint-define-config')
 
 module.exports = defineConfig({
   root: true,
@@ -13,6 +13,7 @@ module.exports = defineConfig({
     'plugin:n/recommended',
     'prettier',
   ],
+  plugins: ['eslint-plugin-tsdoc'],
   parserOptions: {
     ecmaVersion: 'latest',
   },
@@ -45,5 +46,7 @@ module.exports = defineConfig({
     'import/order': ['error', { 'newlines-between': 'always' }],
     // eslint-import-resolver-typescript
     'import/no-unresolved': 'error',
+    // eslint-plugin-tsdoc
+    'tsdoc/syntax': 'warn',
   },
-});
+})

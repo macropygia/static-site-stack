@@ -1,0 +1,38 @@
+extends /templates/_category
+
+block header
+  include ./partials/_partial1
+
+block body
+  include foo.svg
+  include bar.html
+  include partials/_partial2.pug
+  //- include partials/_should_ignore1
+  include partials/_partial3.pug
+  // include partials/_should_ignore2
+  include partials/_partial4.pug
+  div
+    //-
+      include partials/_should_ignore3
+    div
+      include partials/_partial5
+    //
+      include partials/_should_ignore4
+  include partials/_partial6
+  div
+    //-
+      p
+    include partials/_partial7
+    //-
+      p
+  include partials/_partial8
+  div
+    div
+      div
+        include partials/_partial9
+
+//-
+  include partials/_should_ignore5
+
+block footer
+  include ./partials/_partial10

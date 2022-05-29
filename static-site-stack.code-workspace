@@ -2,7 +2,7 @@
   "folders": [
     {
       "path": "."
-    }
+    },
     {
       "path": "packages/vite-plugin-pug-static",
       "name": "vite-plugin-pug-static"
@@ -15,6 +15,10 @@
       "path": "packages/vite-plugin-importer-invalidator",
       "name": "vite-plugin-importer-invalidator"
     },
+    {
+      "path": "packages/pug-graph",
+      "name": "pug-graph"
+    }
   ],
   "settings": {
     "files.excludeGitIgnore": false,

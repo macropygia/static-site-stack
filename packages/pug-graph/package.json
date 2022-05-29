@@ -1,0 +1,52 @@
+{
+  "name": "@macropygia/pug-graph",
+  "version": "0.0.1",
+  "description": "The pug parser to parse only include/extends",
+  "author": "macropygia",
+  "license": "MIT",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/pug-graph#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macropygia/static-site-stack.git",
+    "directory": "packages/pug-graph"
+  },
+  "bugs": {
+    "url": "https://github.com/macropygia/static-site-stack/issue"
+  },
+  "keywords": [
+    "pug",
+    "graph"
+  ],
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "type-check": "tsc --noEmit -p .",
+    "test": "jest",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs --shims",
+    "build": "pnpm clean && pnpm tsup",
+    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm test && pnpm tsup"
+  },
+  "dependencies": {
+    "@types/lokijs": "^1.5.7",
+    "lokijs": "^1.5.12"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "fast-glob": "^3.2.11",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.3",
+    "typescript": "^4.7.2"
+  }
+}
