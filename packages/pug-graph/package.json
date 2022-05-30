@@ -39,11 +39,11 @@
     "prepublishOnly": "pnpm clean && pnpm type-check && pnpm test && pnpm tsup"
   },
   "dependencies": {
-    "@types/lokijs": "^1.5.7",
     "lokijs": "^1.5.12"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
+    "@types/lokijs": "^1.5.7",
     "fast-glob": "^3.2.11",
     "jest": "^28.1.0",
     "ts-jest": "^28.0.3",

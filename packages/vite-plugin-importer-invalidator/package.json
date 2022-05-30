@@ -41,8 +41,10 @@
     "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
   },
   "dependencies": {
-    "@types/picomatch": "^2.3.0",
     "picomatch": "^2.3.1",
     "vite": "^2.9.9"
+  },
+  "devDependencies": {
+    "@types/picomatch": "^2.3.0"
   }
 }

@@ -11,11 +11,11 @@
 ## Usage
 
 ```js
-import fg from "fast-glob"
-import PugGraph from "@macropygia/pug-graph"
+import fg from 'fast-glob'
+import PugGraph from '@macropygia/pug-graph'
 
 // Init
-const graph = PugGraph({ baseDir: "src" })
+const graph = new PugGraph({ baseDir: 'src' })
 
 // Insert
 await graph.parse('src/foo.pug')
@@ -30,7 +30,7 @@ await graph.parse('src/foo.pug')
 graph.unlink('src/foo.pug')
 
 // Multiple files
-const files = fg.sync("src/**/[^_]*.pug")
+const files = fg.sync('src/**/[^_]*.pug')
 await Promise.all(
   files.map((file) =>
     graph.parse(file, { recursive: true })
@@ -38,8 +38,8 @@ await Promise.all(
 )
 
 // Get dependencies
-const fooDependsOn = graph.getImportedFiles("src/foo.pug")
-const barIsImportedBy = graph.getImporters("src/templates/mixins/_bar.pug", {
+const fooDependsOn = graph.getImportedFiles('src/foo.pug')
+const barIsImportedBy = graph.getImporters('src/templates/mixins/_bar.pug', {
   ignorePartial: true,
 })
 

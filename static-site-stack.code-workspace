@@ -4,20 +4,24 @@
       "path": "."
     },
     {
-      "path": "packages/vite-plugin-pug-static",
-      "name": "vite-plugin-pug-static"
+      "path": "packages/pug-graph",
+      "name": "pug-graph"
     },
     {
       "path": "packages/vite-plugin-glob-input",
       "name": "vite-plugin-glob-input"
     },
     {
+      "path": "packages/vite-plugin-imagemin-cache",
+      "name": "vite-plugin-imagemin-cache"
+    },
+    {
       "path": "packages/vite-plugin-importer-invalidator",
       "name": "vite-plugin-importer-invalidator"
     },
     {
-      "path": "packages/pug-graph",
-      "name": "pug-graph"
+      "path": "packages/vite-plugin-pug-static",
+      "name": "vite-plugin-pug-static"
     }
   ],
   "settings": {
