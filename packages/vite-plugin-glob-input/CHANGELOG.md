@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.6
+
+### Patch Changes
+
+- Fix issue when run as mjs
+
 ## 0.0.5
 
 ### Patch Changes
