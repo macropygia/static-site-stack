@@ -1,0 +1,69 @@
+{
+  "name": "@macropygia/vite-plugin-imagemin-cache",
+  "version": "0.0.2",
+  "description": "Vite plugin to compress image files using imagemin. With persistent cache.",
+  "author": "macropygia",
+  "license": "MIT",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/vite-plugin-imagemin-cache#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macropygia/static-site-stack.git",
+    "directory": "packages/vite-plugin-imagemin-cache"
+  },
+  "bugs": {
+    "url": "https://github.com/macropygia/static-site-stack/issue"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "imagemin",
+    "cache"
+  ],
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "type-check": "tsc --noEmit -p .",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
+    "build": "pnpm clean && pnpm tsup",
+    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
+  },
+  "dependencies": {
+    "ansis": "^1.3.6",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "imagemin-webp": "^7.0.0",
+    "lokijs": "^1.5.12",
+    "p-limit": "^4.0.0",
+    "picomatch": "^2.3.1",
+    "polycrc": "^1.1.1",
+    "vite": "^2.9.9"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/imagemin": "^8.0.0",
+    "@types/imagemin-mozjpeg": "^8.0.1",
+    "@types/imagemin-optipng": "^5.2.1",
+    "@types/imagemin-svgo": "^10.0.1",
+    "@types/imagemin-webp": "^7.0.0",
+    "@types/lokijs": "^1.5.7",
+    "@types/picomatch": "^2.3.0",
+    "rollup": "^2.75.3"
+  }
+}
