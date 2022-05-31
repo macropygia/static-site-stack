@@ -58,7 +58,7 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
   if (imageminSettings.svgo !== false) targetExtentions.add('.svg')
   if (imageminSettings.webp !== false) targetExtentions.add('.webp')
 
-  // Init variables used in multple hooks
+  // Init variables used in multiple hooks
   let config: ResolvedConfig
   // let rootDir: string
   let outDir: string
@@ -92,9 +92,9 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
     async generateBundle(_options, bundle: Rollup.OutputBundle) {
       // Get target files in the bundle
       for (const [key, asset] of Object.entries(bundle)) {
-        // Assets only
+        // Asset only
         if (asset.type !== 'asset' || !asset.name) continue
-        // Plugin specified extensions only
+        // Plugin specified filetype only
         if (targetExtentions.has(path.extname(key))) {
           // Excluding
           if (shouldExclude && shouldExclude(asset.name)) {
@@ -107,8 +107,7 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
       // Nothing to do
       if (bundleTargets.size === 0) return
 
-      // Preserve new line
-      logger.info('')
+      logger.info('') // Preserve new line
       logger.info(
         ansis.cyanBright('[vite-plugin-imagemin-cache] ') +
           ansis.green('processing bundle...')
@@ -169,7 +168,6 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
     async closeBundle() {
       const staticMap: Map<string, number> = new Map()
 
-      // Public exists
       if (pubDir) {
         const publicDir: string = pubDir // Type issue
 
@@ -224,7 +222,7 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
                     ansis.green('imagemin error: ') +
                     ansis.yellow(fileName)
                 )
-                throw new Error('imagemin failed')
+                throw new Error(`imagemin failed: ${fileName}`)
               } else {
                 await Promise.all([
                   fse.outputFile(cachePath, content),

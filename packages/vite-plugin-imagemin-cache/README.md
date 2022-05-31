@@ -25,7 +25,7 @@ export default defineConfig({
 ```js
 vitePluginImageminCache(
   {
-    cacheDir: 'node_modules/.imagemin'
+    cacheDir: 'node_modules/.imagemin',
     expireDuration: 864000, // 10 days
     countToExpire: 10,
     concurrency: os.cpus().length,
@@ -40,10 +40,10 @@ vitePluginImageminCache(
 vitePluginImageminCache(
   {
     plugins: {
-      pngquant: { speed: 3, quality: [0.3, 0.5] }
-      optipng: { optimizationLevel: 3 }
-      mozjpeg: { quality: 60 }
-      svgo: { plugins: [ ... ] }
+      pngquant: { speed: 3, quality: [0.3, 0.5] },
+      optipng: { optimizationLevel: 3 },
+      mozjpeg: { quality: 60 },
+      svgo: { plugins: [ ... ] },
       webp: false // Turn off
     }
   }

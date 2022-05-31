@@ -34,7 +34,7 @@
     "clean": "rimraf ./dist",
     "type-check": "tsc --noEmit -p .",
     "test": "jest",
-    "tsup": "tsup src/index.ts --dts --format esm,cjs --shims",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
     "build": "pnpm clean && pnpm tsup",
     "prepublishOnly": "pnpm clean && pnpm type-check && pnpm test && pnpm tsup"
   },
