@@ -1,8 +1,15 @@
 # @macropygia/pug-graph
 
+[![npm version](https://img.shields.io/npm/v/@macropygia/pug-graph.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/pug-graph)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Pug](https://img.shields.io/badge/Pug-a86454?style=flat-square&logo=pug&logoColor=white)](https://pugjs.org/)
+
 **English** | [日本語](README.ja_JP.md)
 
 The pug parser to parse only `include` and `extends` .
+
+- Recommended to run [prettier](https://www.npmjs.com/package/@prettier/plugin-pug) before execution
 
 ## Limitation
 
