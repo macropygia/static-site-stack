@@ -10,7 +10,7 @@
     "url": "https://github.com/macropygia/static-site-stack.git"
   },
   "bugs": {
-    "url": "https://github.com/macropygia/static-site-stack/issue"
+    "url": "https://github.com/macropygia/static-site-stack/issues"
   },
   "scripts": {
     "lint": "eslint --fix packages/*/src/**",
