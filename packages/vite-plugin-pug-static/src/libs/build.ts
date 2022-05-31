@@ -38,7 +38,7 @@ export const vitePluginPugBuild = (
           logger.info(
             ansis.cyanBright('[vite-plugin-pug-static] ') +
               ansis.green('compiled: ') +
-              ansis.yellow(path.relative(__dirname, pathMap.get(id)!))
+              ansis.yellow(path.relative(process.cwd(), pathMap.get(id)!))
           )
           return html
         }

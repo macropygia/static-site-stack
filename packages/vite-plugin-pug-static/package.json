@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-pug-static",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Vite plugin to serve multiple Pug as HTML with middleware and build to static HTML.",
   "author": "macropygia",
   "license": "MIT",
@@ -35,7 +35,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "type-check": "tsc --noEmit -p .",
-    "tsup": "tsup src/index.ts --dts --format esm,cjs --shims",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
     "build": "pnpm clean && pnpm tsup",
     "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
   },
