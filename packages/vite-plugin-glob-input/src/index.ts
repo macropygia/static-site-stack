@@ -55,7 +55,7 @@ const vitePluginGlobInput = (userSettings: UserSettings): Plugin => {
         ...settings.options,
         ...requiredFgOptions,
       }
-      const targets = fg.sync(settings.patterns, fgOptions) // eslint-disable-line import/no-named-as-default-member
+      const targets = fg.sync(settings.patterns, fgOptions)
       let { input } = options
 
       // If input is not set, respect disableAlias.

@@ -44,6 +44,7 @@ module.exports = defineConfig({
     '@typescript-eslint/no-empty-interface': 'off',
     // eslint-plugin-import
     'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/no-named-as-default-member': 'off',
     // eslint-import-resolver-typescript
     'import/no-unresolved': 'error',
     // eslint-plugin-tsdoc
