@@ -11,7 +11,7 @@
     "directory": "packages/vite-plugin-imagemin-cache"
   },
   "bugs": {
-    "url": "https://github.com/macropygia/static-site-stack/issue"
+    "url": "https://github.com/macropygia/static-site-stack/issues"
   },
   "keywords": [
     "vite",

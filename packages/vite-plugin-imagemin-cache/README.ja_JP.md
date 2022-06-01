@@ -1,10 +1,23 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+[![npm version](https://img.shields.io/npm/v/@macropygia/vite-plugin-imagemin-cache.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/vite-plugin-imagemin-cache)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646cff?style=flat-square&logo=Vite&logoColor=white)](https://vitejs.dev)
+
 [English](README.md) | **日本語**
 
-バンドル・静的ファイルに対してimageminを実行するViteプラグイン（永続化キャッシュつき）
+バンドルおよびpublic配下の画像に対してimageminを実行するViteプラグイン（永続化キャッシュつき）
 
-## Usage
+- 注: バンドルファイルはファイル名にハッシュを含んでいる必要がある
+
+## インストール
+
+```shell
+npm install @macropygia/vite-plugin-imagemin-cache
+```
+
+## 使用方法
 
 ```js
 import { defineConfig } from 'vite'
@@ -12,44 +25,67 @@ import vitePluginImageminCache from '@macropygia/vite-plugin-imagemin-cache'
 
 export default defineConfig({
   plugins: [
-    vitePluginImageminCache(),
+    vitePluginImageminCache({
+      cacheDir: '.cache',
+      concurrency: 4,
+      plugins: {
+        pngquant: { quality: [0.6, 0.8] },
+        mozjpeg: { quality: 85 },
+        wbep: false,
+      }
+    }),
   ],
 })
 ```
 
-## 標準設定
+## オプション
 
-```js
-vitePluginImageminCache(
-  {
-    cacheDir: 'node_modules/.imagemin',
-    expireDuration: 864000, // 10日
-    countToExpire: 10,
-    concurrency: os.cpus().length,
-    plugins: {} // 設定が空の場合は標準設定で動作
-  }
-),
-```
+| Parameter        | Type     | Default                  | Required |
+| ---------------- | -------- | ------------------------ | -------- |
+| `cacheDir`       | `string` | `node_modules/.imagemin` | No       |
+| `expireDuration` | `number` | `864000` (10 Days)       | No       |
+| `countToExpire`  | `number` | `10`                     | No       |
+| `concurrency`    | `number` | `os.cpus().length`       | No       |
+| `plugins`        | `object` | `{}`                     | No       |
 
-## Imageminプラグイン設定記述例
+### cacheDir
 
-```js
-vitePluginImageminCache(
-  {
-    plugins: {
-      pngquant: { speed: 3, quality: [0.3, 0.5] },
-      optipng: { optimizationLevel: 3 },
-      mozjpeg: { quality: 60 },
-      svgo: { plugins: [ ... ] },
-      webp: false, // 使用しない場合
-    }
-  }
-),
-```
+- キャッシュディレクトリ配下のディレクトリ構造はViteの出力と同一
 
-## キャッシュの自動削除
+### expireDuration / countToExpire
 
 以下の条件を両方満たしたキャッシュファイルは自動的に削除される
 
 - 直近の `countToExpire` 回のビルドで使用されていない
 - 最後に使用してから `expireDuration` 秒以上経過している
+
+### concurrency
+
+- 圧縮処理の最大同時実行数
+
+### plugins
+
+- imageminプラグインの設定
+- 設定が空のプラグインは標準設定で実行される
+- 以下のプラグインが使用できる（カッコ内は対応する拡張子）
+    - imagemin-pngquant ( `.png` )
+    - imagemin-optipng ( `.png` )
+    - imagemin-mozjpeg ( `.jpg` and `.jpeg` )
+    - imagemin-svgo ( `.svg` )
+    - imagemin-webp ( `.webp` )
+
+#### 設定例
+
+```js
+vitePluginImageminCache(
+  {
+    plugins: {
+      pngquant: { speed: 1, quality: [0.6, 1.0] },
+      optipng: { optimizationLevel: 3 },
+      mozjpeg: { quality: 85 },
+      svgo: { plugins: [ ... ] },
+      webp: false, // 不使用
+    },
+  }
+)
+```

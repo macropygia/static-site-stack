@@ -11,7 +11,7 @@
     "directory": "packages/vite-plugin-glob-input"
   },
   "bugs": {
-    "url": "https://github.com/macropygia/static-site-stack/issue"
+    "url": "https://github.com/macropygia/static-site-stack/issues"
   },
   "keywords": [
     "vite",
@@ -40,7 +40,9 @@
     "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
   },
   "dependencies": {
-    "fast-glob": "^3.2.11",
+    "fast-glob": "^3.2.11"
+  },
+  "devDependencies": {
     "vite": "^2.9.9"
   }
 }

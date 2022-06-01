@@ -7,7 +7,15 @@
 
 **English** | [日本語](README.ja_JP.md)
 
-Vite plugin to compress image files using imagemin. With persistent cache.
+Vite plugin to compress bundle and public images using imagemin. With persistent cache.
+
+- Notice: A filename of a bundle must contain a hash.
+
+## Installation
+
+```shell
+npm install @macropygia/vite-plugin-imagemin-cache
+```
 
 ## Usage
 
@@ -17,44 +25,68 @@ import vitePluginImageminCache from '@macropygia/vite-plugin-imagemin-cache'
 
 export default defineConfig({
   plugins: [
-    vitePluginImageminCache(),
+    vitePluginImageminCache(
+      cacheDir: '.cache',
+      concurrency: 4,
+      plugins: {
+        pngquant: { quality: [0.6, 0.8] },
+        mozjpeg: { quality: 85 },
+        wbep: false,
+      }
+    ),
   ],
 })
 ```
 
-## Default settings
+## Options
 
-```js
-vitePluginImageminCache(
-  {
-    cacheDir: 'node_modules/.imagemin',
-    expireDuration: 864000, // 10 days
-    countToExpire: 10,
-    concurrency: os.cpus().length,
-    plugins: {} // If not set, run as default
-  }
-),
-```
+| Parameter        | Type     | Default                  | Required |
+| ---------------- | -------- | ------------------------ | -------- |
+| `cacheDir`       | `string` | `node_modules/.imagemin` | No       |
+| `expireDuration` | `number` | `864000` (10 Days)       | No       |
+| `countToExpire`  | `number` | `10`                     | No       |
+| `concurrency`    | `number` | `os.cpus().length`       | No       |
+| `plugins`        | `object` | `{}`                     | No       |
 
-## Imagemin plugin settings
+### cacheDir
+
+- The directory structure is as same as the destination.
+
+### expireDuration / countToExpire
+
+Cache files will delete when the following conditions are satisfied.
+
+- The file did not use in the last `countToExpire` times of the build.
+- Over `expireDuration` seconds have passed since last used.
+
+### concurrency
+
+- The maximum concurrency of compressing.
+
+
+### plugins
+
+- Imagemin plugin settings.
+- If the setting is empty, the plugin will run with its default settings.
+- Following plugins are available.
+    - imagemin-pngquant ( `.png` )
+    - imagemin-optipng ( `.png` )
+    - imagemin-mozjpeg ( `.jpg` and `.jpeg` )
+    - imagemin-svgo ( `.svg` )
+    - imagemin-webp ( `.webp` )
+
+#### Example
 
 ```js
 vitePluginImageminCache(
   {
     plugins: {
-      pngquant: { speed: 3, quality: [0.3, 0.5] },
+      pngquant: { speed: 1, quality: [0.6, 1.0] },
       optipng: { optimizationLevel: 3 },
-      mozjpeg: { quality: 60 },
+      mozjpeg: { quality: 85 },
       svgo: { plugins: [ ... ] },
-      webp: false // Turn off
-    }
+      webp: false, // Turn off
+    },
   }
-),
+)
 ```
-
-## Expiration
-
-Cache files will delete when the following conditions are satisfied.
-
-- Did not use in the last `countToExpire` times of build
-- Over `expireDuration` seconds have passed since last used
