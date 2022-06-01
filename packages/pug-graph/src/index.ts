@@ -4,7 +4,7 @@ import path from 'path'
 import Loki from 'lokijs'
 
 export interface UserSettings {
-  baseDir: string
+  baseDir?: string
   // persistent?: boolean | string
   // indentChar?: string
   useAbsPath?: boolean
@@ -56,10 +56,12 @@ export interface DepsResult extends LokiObj {
  * paserFile用設定
  *
  * @param recursive - 再帰的に解析するかどうか
+ * @param updateDescendants - 再帰的に解析する際に子孫もアップデートする
  * @param insertOnly - 新規追加時のみ記録する
  */
 export interface ParseSettigs {
   recursive: boolean
+  updateDescendants: boolean
   insertOnly: boolean
 }
 
@@ -101,7 +103,7 @@ class PugGraph {
    *
    * @param userSettings - ユーザ設定
    */
-  constructor(userSettings: UserSettings) {
+  constructor(userSettings?: UserSettings) {
     const settings: Settings = {
       ...defaultSettings,
       ...userSettings,
@@ -320,9 +322,11 @@ class PugGraph {
     if (settings.recursive && deps.size) {
       await Promise.all(
         // 既にDBに登録されていればスキップ
-        Array.from(deps).map((dep) =>
-          this.#existsRecord(dep) ? null : this.parse(dep, settings)
-        )
+        Array.from(deps).map((dep) => {
+          if (!settings.updateDescendants && this.#existsRecord(dep))
+            return null
+          return this.parse(dep, settings)
+        })
       )
     }
   }

@@ -1,35 +1,45 @@
 # @macropygia/pug-graph
 
+[![npm version](https://img.shields.io/npm/v/@macropygia/pug-graph.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/pug-graph)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Pug](https://img.shields.io/badge/Pug-a86454?style=flat-square&logo=pug&logoColor=white)](https://pugjs.org/)
+
 [English](README.md) | **日本語**
 
-`include` と `extends` のみを解析するPugパーサ
+Pugの `include` と `extends` を解析して依存関係を取得する
 
-## Limitation
+- 実行前にPrettierの [@prettier/plugin-pug](https://www.npmjs.com/package/@prettier/plugin-pug) を使用してフォーマットすることを推奨
+- 半角スペースのみインデントとして認識する
 
-- インデントとして認識するのは半角スペースのみ
+## インストール
 
-## Usage
+```shell
+npm install @macropygia/pug-graph
+```
+
+## 使用方法
 
 ```js
 import fg from 'fast-glob'
 import PugGraph from '@macropygia/pug-graph'
 
-// Init
+// 初期化
 const graph = new PugGraph({ baseDir: 'src' })
 
-// Insert
+// 追加
 await graph.parse('src/foo.pug')
 
-// Insert recursively
+// 再帰的に追加
 await graph.parse('src/foo.pug', { recursive: true })
 
-// Update
+// 更新
 await graph.parse('src/foo.pug')
 
-// Delete
+// 削除
 graph.unlink('src/foo.pug')
 
-// Multiple files
+// 複数ファイルの処理
 const files = fg.sync('src/**/[^_]*.pug')
 await Promise.all(
   files.map((file) =>
@@ -37,12 +47,76 @@ await Promise.all(
   )
 )
 
-// Get dependencies
+// 依存関係を取得
 const fooDependsOn = graph.getImportedFiles('src/foo.pug')
 const barIsImportedBy = graph.getImporters('src/templates/mixins/_bar.pug', {
   ignorePartial: true,
 })
 
-// Exit (Currently not required, but reserved for persistence option.)
+// 終了
 graph.exit()
 ```
+
+## API
+
+### constructor(options)
+
+| Parameter            | Type      | Default | Required |
+| -------------------- | --------- | ------- | -------- |
+| `options.baseDir`    | `string`  | `""`    | No       |
+| `options.useAbsPath` | `boolean` | `false` | No       |
+
+- `options.baseDir`
+    - Pugの同名オプションと同一
+- `options.useAbsPath`
+    - 絶対パスを使用する
+
+### parse(filepath, options)
+
+| Parameter                   | Type      | Default | Required |
+| --------------------------- | --------- | ------- | -------- |
+| `filepath`                  | `string`  |         | Yes      |
+| `options.insertOnly`        | `boolean` | `false` | No       |
+| `options.recursive`         | `boolean` | `false` | No       |
+| `options.updateDescendants` | `boolean` | `false` | No       |
+
+- 非同期
+- `options.insertOnly`
+    - データベース上に存在する場合はスキップする
+- `options.recursive`
+    - 再帰的に実行する
+    - データベース上に存在する子孫はスキップする
+- `options.updateDescendants`
+    - データベース上に存在する子孫も更新する
+
+### getImportedFiles(filepath)
+
+| Parameter  | Type     | Default | Required |
+| ---------- | -------- | ------- | -------- |
+| `filepath` | `string` |         | Yes      |
+
+- Returns: `Set<string>`
+
+### getImporters(filepath, ignorePartial)
+
+| Parameter       | Type      | Default | Required |
+| --------------- | --------- | ------- | -------- |
+| `filepath`      | `string`  |         | Yes      |
+| `ignorePartial` | `boolean` | `true`  | No       |
+
+- Returns: `Set<string>`
+
+### unlink(filepath)
+
+| Parameter  | Type     | Default | Required |
+| ---------- | -------- | ------- | -------- |
+| `filepath` | `string` |         | Yes      |
+
+### getRawData()
+
+- Returns: `object[]`
+- データベースの全レコードのオブジェクト配列を返す
+
+### exit()
+
+- データベースを閉じて終了する

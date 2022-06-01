@@ -7,13 +7,16 @@
 
 **English** | [日本語](README.ja_JP.md)
 
-The pug parser to parse only `include` and `extends` .
+Parses `include` and `extends` in Pug files and gets dependencies.
 
-- Recommended to run [prettier](https://www.npmjs.com/package/@prettier/plugin-pug) before execution
+- Recommended running Prettier with [@prettier/plugin-pug](https://www.npmjs.com/package/@prettier/plugin-pug) before execution.
+- Use only spaces for indentation.
 
-## Limitation
+## Installation
 
-- Use only spaces for indentation
+```shell
+npm install @macropygia/pug-graph
+```
 
 ## Usage
 
@@ -50,6 +53,71 @@ const barIsImportedBy = graph.getImporters('src/templates/mixins/_bar.pug', {
   ignorePartial: true,
 })
 
-// Exit (Currently not required, but reserved for persistence option.)
+// Exit
 graph.exit()
 ```
+
+## API
+
+### constructor(options)
+
+| Parameter            | Type      | Default | Required |
+| -------------------- | --------- | ------- | -------- |
+| `options.baseDir`    | `string`  | `""`    | No       |
+| `options.useAbsPath` | `boolean` | `false` | No       |
+
+- `options.baseDir`
+    - Same as Pug option.
+- `options.useAbsPath`
+    - Use absolute path.
+
+### parse(filepath, options)
+
+| Parameter                   | Type      | Default | Required |
+| --------------------------- | --------- | ------- | -------- |
+| `filepath`                  | `string`  |         | Yes      |
+| `options.insertOnly`        | `boolean` | `false` | No       |
+| `options.recursive`         | `boolean` | `false` | No       |
+| `options.updateDescendants` | `boolean` | `false` | No       |
+
+- Asynchronous
+- `options.insertOnly`
+    - Skip if the file already exists in the database.
+- `options.recursive`
+    - Parse recursively.
+    - Skip if the file of the descendants already exists in the database.
+- `options.updateDescendants`
+    - Use with recursive option.
+    - Force update the descendants.
+
+### getImportedFiles(filepath)
+
+| Parameter  | Type     | Default | Required |
+| ---------- | -------- | ------- | -------- |
+| `filepath` | `string` |         | Yes      |
+
+- Returns: `Set<string>`
+
+### getImporters(filepath, ignorePartial)
+
+| Parameter       | Type      | Default | Required |
+| --------------- | --------- | ------- | -------- |
+| `filepath`      | `string`  |         | Yes      |
+| `ignorePartial` | `boolean` | `true`  | No       |
+
+- Returns: `Set<string>`
+
+### unlink(filepath)
+
+| Parameter  | Type     | Default | Required |
+| ---------- | -------- | ------- | -------- |
+| `filepath` | `string` |         | Yes      |
+
+### getRawData()
+
+- Returns: `object[]`
+- Returns all records as object array.
+
+### exit()
+
+- Close the database and exit.
