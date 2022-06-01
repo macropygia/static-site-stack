@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-imagemin-cache",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vite plugin to compress image files using imagemin. With persistent cache.",
   "author": "macropygia",
   "license": "MIT",
