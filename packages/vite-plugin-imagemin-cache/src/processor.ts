@@ -3,7 +3,7 @@ import imageminPngquant from 'imagemin-pngquant'
 import imageminOptipng from 'imagemin-optipng'
 import imageminMozjpeg from 'imagemin-mozjpeg'
 import imageminSvgo from 'imagemin-svgo'
-import imageminWebp from 'imagemin-webp'
+// import imageminWebp from 'imagemin-webp'
 
 import type { ImageminSettings } from './types'
 
@@ -16,7 +16,7 @@ async function processor(settings: ImageminSettings, buffer: Buffer) {
   if (settings.mozjpeg !== false)
     plugins.push(imageminMozjpeg(settings.mozjpeg))
   if (settings.svgo !== false) plugins.push(imageminSvgo(settings.svgo))
-  if (settings.webp !== false) plugins.push(imageminWebp(settings.webp))
+  // if (settings.webp !== false) plugins.push(imageminWebp(settings.webp))
 
   try {
     return await imagemin.buffer(buffer, {

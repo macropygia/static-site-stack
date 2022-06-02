@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-imagemin-cache",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vite plugin to compress image files using imagemin. With persistent cache.",
   "author": "macropygia",
   "license": "MIT",
@@ -48,7 +48,6 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^10.0.1",
-    "imagemin-webp": "^7.0.0",
     "lokijs": "^1.5.12",
     "p-limit": "^4.0.0",
     "picomatch": "^2.3.1",
@@ -61,9 +60,8 @@
     "@types/imagemin-mozjpeg": "^8.0.1",
     "@types/imagemin-optipng": "^5.2.1",
     "@types/imagemin-svgo": "^10.0.1",
-    "@types/imagemin-webp": "^7.0.0",
     "@types/lokijs": "^1.5.7",
     "@types/picomatch": "^2.3.0",
-    "rollup": "^2.75.3"
+    "rollup": "^2.75.5"
   }
 }

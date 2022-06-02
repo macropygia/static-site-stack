@@ -4,14 +4,14 @@ import type { Options as ImageminPngquatOptions } from 'imagemin-pngquant'
 import type { Options as ImageminOptipngOptions } from 'imagemin-optipng'
 import type { Options as ImageminMozjpegOptions } from 'imagemin-mozjpeg'
 import type { Options as ImageminSvgoOptions } from 'imagemin-svgo'
-import type { Options as ImageminWebpOptions } from 'imagemin-webp'
+// import type { Options as ImageminWebpOptions } from 'imagemin-webp'
 
 export interface ImageminSettings {
   pngquant?: ImageminPngquatOptions | false
   optipng?: ImageminOptipngOptions | false
   mozjpeg?: ImageminMozjpegOptions | false
   svgo?: ImageminSvgoOptions | false
-  webp?: ImageminWebpOptions | false
+  // webp?: ImageminWebpOptions | false
 }
 
 export interface Settings {

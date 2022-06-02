@@ -9,7 +9,9 @@
 
 バンドルおよびpublic配下の画像に対してimageminを実行するViteプラグイン（永続化キャッシュつき）
 
-- 注: バンドルファイルはファイル名にハッシュを含んでいる必要がある
+- このパッケージは開発中です
+    - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
+- バンドルファイルはファイル名にハッシュを含んでいる必要がある
 
 ## インストール
 
@@ -31,7 +33,6 @@ export default defineConfig({
       plugins: {
         pngquant: { quality: [0.6, 0.8] },
         mozjpeg: { quality: 85 },
-        wbep: false,
       }
     }),
   ],
@@ -72,7 +73,6 @@ export default defineConfig({
     - imagemin-optipng ( `.png` )
     - imagemin-mozjpeg ( `.jpg` and `.jpeg` )
     - imagemin-svgo ( `.svg` )
-    - imagemin-webp ( `.webp` )
 
 #### 設定例
 
@@ -81,10 +81,9 @@ vitePluginImageminCache(
   {
     plugins: {
       pngquant: { speed: 1, quality: [0.6, 1.0] },
-      optipng: { optimizationLevel: 3 },
+      optipng: false, // 不使用
       mozjpeg: { quality: 85 },
       svgo: { plugins: [ ... ] },
-      webp: false, // 不使用
     },
   }
 )

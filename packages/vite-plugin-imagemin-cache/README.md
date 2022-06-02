@@ -9,7 +9,9 @@
 
 Vite plugin to compress bundle and public images using imagemin. With persistent cache.
 
-- Notice: A filename of a bundle must contain a hash.
+- **This package is currently unstable.**
+    - Breaking changes may occur without any notice, even if in patch releases.
+- A filename of a bundle must contain a hash.
 
 ## Installation
 
@@ -25,15 +27,14 @@ import vitePluginImageminCache from '@macropygia/vite-plugin-imagemin-cache'
 
 export default defineConfig({
   plugins: [
-    vitePluginImageminCache(
+    vitePluginImageminCache({
       cacheDir: '.cache',
       concurrency: 4,
       plugins: {
         pngquant: { quality: [0.6, 0.8] },
         mozjpeg: { quality: 85 },
-        wbep: false,
       }
-    ),
+    }),
   ],
 })
 ```
@@ -68,12 +69,11 @@ Cache files will delete when the following conditions are satisfied.
 
 - Imagemin plugin settings.
 - If the setting is empty, the plugin will run with its default settings.
-- Following plugins are available.
+- Following plugins and extensions are available.
     - imagemin-pngquant ( `.png` )
     - imagemin-optipng ( `.png` )
     - imagemin-mozjpeg ( `.jpg` and `.jpeg` )
     - imagemin-svgo ( `.svg` )
-    - imagemin-webp ( `.webp` )
 
 #### Example
 
@@ -82,10 +82,9 @@ vitePluginImageminCache(
   {
     plugins: {
       pngquant: { speed: 1, quality: [0.6, 1.0] },
-      optipng: { optimizationLevel: 3 },
+      optipng: false, // Turn off
       mozjpeg: { quality: 85 },
       svgo: { plugins: [ ... ] },
-      webp: false, // Turn off
     },
   }
 )

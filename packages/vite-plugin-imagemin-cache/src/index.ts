@@ -56,7 +56,7 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
   if (imageminSettings.mozjpeg !== false)
     targetExtentions.add('.jpg').add('.jpeg')
   if (imageminSettings.svgo !== false) targetExtentions.add('.svg')
-  if (imageminSettings.webp !== false) targetExtentions.add('.webp')
+  // if (imageminSettings.webp !== false) targetExtentions.add('.webp')
 
   // Init variables used in multiple hooks
   let config: ResolvedConfig

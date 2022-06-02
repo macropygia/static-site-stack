@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.0.4
+
+### Patch Changes
+
+- Remove webp support temporarily
+
 ## 0.0.3
 
 ### Patch Changes
@@ -10,7 +16,7 @@
 
 ### Patch Changes
 
-- Fix incorrect \_\_dirname
+- Fix incorrect use of `__dirname`
 
 ## 0.0.1
 
