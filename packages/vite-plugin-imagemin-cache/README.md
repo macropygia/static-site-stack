@@ -42,13 +42,14 @@ export default defineConfig({
 
 ## Options
 
-| Parameter        | Type     | Default                  | Required |
-| ---------------- | -------- | ------------------------ | -------- |
-| `cacheDir`       | `string` | `node_modules/.imagemin` | No       |
-| `expireDuration` | `number` | `864000` (10 Days)       | No       |
-| `countToExpire`  | `number` | `10`                     | No       |
-| `concurrency`    | `number` | `os.cpus().length`       | No       |
-| `plugins`        | `object` | `{}`                     | No       |
+| Parameter        | Type                 | Default                  | Required |
+| ---------------- | -------------------- | ------------------------ | -------- |
+| `cacheDir`       | `string`             | `node_modules/.imagemin` | No       |
+| `expireDuration` | `number`             | `864000` (10 Days)       | No       |
+| `countToExpire`  | `number`             | `10`                     | No       |
+| `concurrency`    | `number`             | `os.cpus().length`       | No       |
+| `exclude`        | `string \| string[]` |                          | No       |
+| `plugins`        | `object`             | `{}`                     | No       |
 
 ### cacheDir
 
@@ -65,6 +66,10 @@ Cache files will delete when the following conditions are satisfied.
 
 - The maximum concurrency of compressing.
 
+### exclude
+
+- Exclude patterns.
+- Ref. [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
 
 ### plugins
 

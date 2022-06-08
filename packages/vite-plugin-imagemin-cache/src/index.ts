@@ -195,6 +195,8 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
         // Add files to compressing queue
         const queue = [...staticTargets].map(async (fileName) => {
           return limit(async () => {
+            if (shouldExclude && shouldExclude(fileName)) return
+
             const srcPath = path.join(publicDir, fileName)
 
             if (!fse.existsSync(srcPath))

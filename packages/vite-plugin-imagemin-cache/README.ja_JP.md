@@ -42,13 +42,14 @@ export default defineConfig({
 
 ## オプション
 
-| Parameter        | Type     | Default                  | Required |
-| ---------------- | -------- | ------------------------ | -------- |
-| `cacheDir`       | `string` | `node_modules/.imagemin` | No       |
-| `expireDuration` | `number` | `864000` (10 Days)       | No       |
-| `countToExpire`  | `number` | `10`                     | No       |
-| `concurrency`    | `number` | `os.cpus().length`       | No       |
-| `plugins`        | `object` | `{}`                     | No       |
+| Parameter        | Type                 | Default                  | Required |
+| ---------------- | -------------------- | ------------------------ | -------- |
+| `cacheDir`       | `string`             | `node_modules/.imagemin` | No       |
+| `expireDuration` | `number`             | `864000` (10 Days)       | No       |
+| `countToExpire`  | `number`             | `10`                     | No       |
+| `concurrency`    | `number`             | `os.cpus().length`       | No       |
+| `exclude`        | `string \| string[]` |                          | No       |
+| `plugins`        | `object`             | `{}`                     | No       |
 
 ### cacheDir
 
@@ -64,6 +65,11 @@ export default defineConfig({
 ### concurrency
 
 - 圧縮処理の最大同時実行数
+
+### exclude
+
+- 除外パターン
+- 参照: [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
 
 ### plugins
 
