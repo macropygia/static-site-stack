@@ -1,16 +1,25 @@
 # @macropygia/vite-plugin-pug-static
 
+[![npm version](https://img.shields.io/npm/v/@macropygia/vite-plugin-pug-static.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/vite-plugin-pug-static)
+[![MIT](https://img.shields.io/npm/l/@macropygia/vite-plugin-pug-static?style=flat-square)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646cff?style=flat-square&logo=Vite&logoColor=white)](https://vitejs.dev)
+[![Pug](https://img.shields.io/badge/Pug-a86454?style=flat-square&logo=pug&logoColor=white)](https://pugjs.org/)
+
 [English](README.md) | **日本語**
 
 複数の Pug を静的な HTML として扱う Vite プラグイン
 
-- 従来型静的 Web サイト向け
-- 開発サーバではミドルウェアとして動作し HTML へのアクセスに対して Pug のコンパイル結果を出力する
-- ビルド時は Pug を静的な HTML として出力する
+- このパッケージは開発中です
+    - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
+    - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
+- 従来型静的Webサイト向け
+- 開発サーバではミドルウェアとして動作しHTMLへのアクセスに対してPugのコンパイル結果を出力する
+- ビルド時はPugを静的なHTMLとして出力する
 - 現時点ではあらゆるファイルの変更をトリガにフルリロードを行う（開発サーバ）
-    - Vite の HMR に Pug と HTML の依存関係を注入する機能が未実装のため
+    - ViteのHMRにPugとHTMLの依存関係を注入する機能が未実装のため
 
-## 使用方法
+## Usage
 
 ```js
 // vite.config.js
@@ -20,41 +29,39 @@ import vitePluginPugStatic from '@macropygia/vite-plugin-pug-static'
 export default defineConfig({
   plugins: [
     vitePluginPugStatic({
-      /* Options */
+      buildOptions: { basedir: "./src" },
+      serveOptions: { basedir: "./src" },
     }),
   ],
 })
 ```
 
-## オプション
+## Options
+
+| Parameter       | Type                 | Default | Required |
+| --------------- | -------------------- | ------- | -------- |
+| `buildOptions`  | `object`             |         | No       |
+| `serveOptions`  | `object`             |         | No       |
+| `locals`        | `object`             |         | No       |
+| `ignorePattern` | `string \| string[]` |         | No       |
 
 ### buildOptions
 
-- Required: `false`
-- Type: `object`
-- Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
-
-ビルド時に使用する Pug のオプション。
+- ビルドで使用するPugのオプション
+- 参照: [Options - Pug](https://pugjs.org/api/reference.html#options)
 
 ### serveOptions
 
-- Required: `false`
-- Type: `object`
-- Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
-
-開発サーバで使用する Pug のオプション。
+- 開発サーバで使用するPugのオプション
+- 参照: [Options - Pug](https://pugjs.org/api/reference.html#options)
 
 ### locals
 
-- Required: `false`
-- Type: `object`
-
-Pug のコンパイル時に注入する locals オブジェクト。
+- ビルド時に注入するlocalsオブジェクト
+- 参照: [API Reference - Pug](https://pugjs.org/api/reference.html#pugcompilesource-options)
 
 ### ignorePattern
 
-- Required: `false`
-- Type: `string | string[]`
-- Ref. [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
-
-開発サーバ上で処理対象から除外するパターン。なお `vite-plugin-inpsect` には標準で対応している。
+- 開発サーバで変換から除外するパターン
+- 参照: [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
+- [vite-plugin-inpsect](https://www.npmjs.com/package/vite-plugin-inspect) に関連するアクセスは標準で除外される

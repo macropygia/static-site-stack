@@ -1,7 +1,7 @@
 # @macropygia/pug-graph
 
 [![npm version](https://img.shields.io/npm/v/@macropygia/pug-graph.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/pug-graph)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
+[![MIT](https://img.shields.io/npm/l/@macropygia/pug-graph?style=flat-square)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Pug](https://img.shields.io/badge/Pug-a86454?style=flat-square&logo=pug&logoColor=white)](https://pugjs.org/)
 
@@ -9,6 +9,9 @@
 
 Pugの `include` と `extends` を解析して依存関係を取得する
 
+- このパッケージは開発中です
+    - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
+    - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
 - 実行前にPrettierの [@prettier/plugin-pug](https://www.npmjs.com/package/@prettier/plugin-pug) を使用してフォーマットすることを推奨
 - 半角スペースのみインデントとして認識する
 

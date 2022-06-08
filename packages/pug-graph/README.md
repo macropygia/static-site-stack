@@ -1,7 +1,7 @@
 # @macropygia/pug-graph
 
 [![npm version](https://img.shields.io/npm/v/@macropygia/pug-graph.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/pug-graph)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
+[![MIT](https://img.shields.io/npm/l/@macropygia/pug-graph?style=flat-square)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Pug](https://img.shields.io/badge/Pug-a86454?style=flat-square&logo=pug&logoColor=white)](https://pugjs.org/)
 
@@ -9,6 +9,9 @@
 
 Parses `include` and `extends` in Pug files and gets dependencies.
 
+- **This package is currently unstable.**
+    - Breaking changes may occur without any notice, even if in patch releases.
+    - See [CHANGELOG](CHANGELOG.md) for changes.
 - Recommended running Prettier with [@prettier/plugin-pug](https://www.npmjs.com/package/@prettier/plugin-pug) before execution.
 - Use only spaces for indentation.
 

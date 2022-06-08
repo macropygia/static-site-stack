@@ -1,9 +1,17 @@
 # @macropygia/vite-plugin-glob-input
 
+[![npm version](https://img.shields.io/npm/v/@macropygia/vite-plugin-glob-input.svg?style=flat-square)](https://www.npmjs.com/package/@macropygia/vite-plugin-glob-input)
+[![MIT](https://img.shields.io/npm/l/@macropygia/vite-plugin-glob-input?style=flat-square)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-646cff?style=flat-square&logo=Vite&logoColor=white)](https://vitejs.dev)
+
 [English](README.md) | **日本語**
 
 fast-glob の結果を `build.rollupOptions.input` に注入する Vite プラグイン
 
+- このパッケージは開発中です
+    - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
+    - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
 - 従来型静的 Web サイト向け
 - ディレクトリ名とファイル名からエイリアスを自動生成
     - `/index.html` -> `home`
@@ -18,49 +26,47 @@ fast-glob の結果を `build.rollupOptions.input` に注入する Vite プラ�
 
 ```js
 // vite.config.js
-import { defineConfig } from "vite";
-import vitePluginGlobInput from "@macropygia/vite-plugin-glob-input";
+import { defineConfig } from 'vite'
+import vitePluginGlobInput from '@macropygia/vite-plugin-glob-input'
 
-export 初期値 defineConfig({
+export default defineConfig({
   plugins: [
     vitePluginGlobInput({
-      /* Options */
-    })
-  ]
-});
+      patterns: 'src/**/*.html',
+    }),
+  ],
+})
 ```
 
 ## オプション
 
+| Parameter      | Type                 | Default | Required |
+| -------------- | -------------------- | ------- | -------- |
+| `patterns`     | `string \| string[]` |         | Yes      |
+| `options`      | `object`             |         | No       |
+| `disableAlias` | `boolean`            | `false` | No       |
+| `homeAlias`    | `string`             | `home`  | No       |
+| `rootPrefix`   | `string`             | `root`  | No       |
+| `dirDelimiter` | `string`             | `-`     | No       |
+| `filePrefix`   | `string`             | `_`     | No       |
+
 ### patterns
 
-- 必須
-- Type: `string | string[]`
+- fast-globのパターン指定と同一
 - 参照: [Pattern syntax - fast-glob](https://github.com/mrmlnc/fast-glob#pattern-syntax)
-
-fast-glob のパターン指定と同一。
 
 ### options
 
-- 任意
-- Type: `object`
+- fast-globのオプションと同一
+    - ただし `options.absolute` は強制的に `true` に設定される
 - 参照: [Options - fast-glob](https://github.com/mrmlnc/fast-glob#options-3)
-
-fast-glob のオプションと同一。 `options.absolute` は強制的に `true` に設定される。
 
 ### disableAlias
 
-- 任意
-- Type: `boolean`
-- 初期値: `false`
-
-エイリアスの自動生成を停止し `build.rollupOptions.input` の型を配列（ `string[]` ）に変更。
+- エイリアスの自動生成を停止する
+- `build.rollupOptions.input` の型を配列（ `string[]` ）に変更
 
 ### homeAlias
-
-- 任意
-- Type: `string`
-- 初期値: `home`
 
 ルートディレクトリの index に使用されるエイリアス。
 
@@ -68,30 +74,18 @@ fast-glob のオプションと同一。 `options.absolute` は強制的に `tru
 
 ### rootPrefix
 
-- 任意
-- Type: `string`
-- 初期値: `root`
-
-ルートディレクトリのエイリアス。ルートディレクトリに index 以外のファイルがある場合に使用される。
+ルートディレクトリのエイリアス。ルートディレクトリにindex以外のファイルがある場合に使用される。
 
 > /foo.html -> root_foo
 
 ### dirDelimiter
 
-- 任意
-- Type: `string`
-- 初期値: `-`
-
-ディレクトリ名を連結するデリミタ。
+ディレクトリ名を連結する文字列。
 
 > /foo/bar/index.html -> foo-bar
 
 ### filePrefix
 
-- 任意
-- Type: `string`
-- 初期値: `_`
-
-index 以外のファイルに付与される接頭辞。
+index以外のファイルに付与される接頭辞。
 
 > /foo/bar/baz.html -> foo-bar_baz
