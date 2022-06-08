@@ -1,6 +1,14 @@
 dist
+
+# TypeDoc
+packages/*/docs
+
+# VSCode
 .vscode
-.code-workspace
+*.code-workspace
+
+# WSL
+*Zone.Identifier
 
 # [macOS]
 # ref. https://github.com/github/gitignore/blob/main/Global/macOS.gitignore

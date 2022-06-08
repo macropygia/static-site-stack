@@ -12,8 +12,6 @@
     "checkJs": false,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "strictFunctionTypes": true,
-
-    "outDir": "dummy" // Hack for VSCode
+    "strictFunctionTypes": true
   }
 }

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires, n/no-unpublished-require */
-const { defineConfig } = require('eslint-define-config')
+// @ts-check
+const { defineConfig } = require('eslint-define-config') // eslint-disable-line
 
 module.exports = defineConfig({
   root: true,
@@ -29,9 +29,18 @@ module.exports = defineConfig({
     },
   },
   rules: {
-    // ref. https://github.com/weiran-zsd/eslint-plugin-node#readme
-    'n/no-missing-import': 'off',
-    'n/no-unsupported-features/es-syntax': 'off',
+    // Required settings
+    'n/no-missing-import': 'off', // Required to omit extensions
+    'n/no-unsupported-features/es-syntax': 'off', // Required to use impot
+    // eslint-plugin-import
+    'import/order': ['error', { 'newlines-between': 'always' }], // Required to use autofix
+    'import/no-named-as-default-member': 'off', // When building a subproject with dual packages, some packages will not load if this option is satisfied.
+    // eslint-import-resolver-typescript
+    'import/no-unresolved': 'error', // Enable main feature
+    // eslint-plugin-tsdoc
+    'tsdoc/syntax': 'warn', // Required to use autofix
+
+    // Optional settings
     // for Map
     '@typescript-eslint/no-non-null-assertion': 'off',
     // for try..catch
@@ -42,12 +51,5 @@ module.exports = defineConfig({
     // loosen
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
-    // eslint-plugin-import
-    'import/order': ['error', { 'newlines-between': 'always' }],
-    'import/no-named-as-default-member': 'off',
-    // eslint-import-resolver-typescript
-    'import/no-unresolved': 'error',
-    // eslint-plugin-tsdoc
-    'tsdoc/syntax': 'warn',
   },
 })

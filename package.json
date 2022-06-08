@@ -13,8 +13,8 @@
     "url": "https://github.com/macropygia/static-site-stack/issues"
   },
   "scripts": {
-    "lint": "eslint --fix packages/*/src/**",
-    "prettier": "prettier --write packages/*/src/**",
+    "lint": "eslint --fix **/*.{ts,d.ts,js,cjs,mjs}",
+    "prettier": "prettier --write --ignore-unknown **/*",
     "preinstall": "npx -y only-allow pnpm",
     "prepare": "simple-git-hooks"
   },
@@ -22,13 +22,10 @@
     "pre-commit": "pnpm exec lint-staged --concurrent false && pnpm -r type-check"
   },
   "lint-staged": {
-    "**/*.{ts,js,cjs,mjs,json}": [
+    "**/*": [
       "prettier --write --ignore-unknown"
     ],
-    "packages/*/src/**/*.ts": [
-      "eslint --fix"
-    ],
-    "packages/**/*.d.ts": [
+    "**/*.{ts,d.ts,js,cjs,mjs}": [
       "eslint --fix"
     ]
   },
@@ -40,7 +37,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.22.0",
-    "@microsoft/tsdoc": "^0.14.1",
     "@tsconfig/node16-strictest-esm": "^1.0.1",
     "@types/node": "17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
@@ -52,13 +48,15 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-tsdoc": "^0.2.16",
+    "jest": "^28.1.0",
     "lint-staged": "^12.5.0",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.8.0",
+    "ts-jest": "^28.0.3",
     "ts-node": "^10.8.0",
     "tsup": "^6.0.1",
     "typedoc": "^0.22.17",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   }
 }
