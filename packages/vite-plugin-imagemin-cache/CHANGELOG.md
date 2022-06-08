@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.0.5
+
+### Patch Changes
+
+- Add exclude feature
+
 ## 0.0.4
 
 ### Patch Changes

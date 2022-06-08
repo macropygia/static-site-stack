@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.8
+
+### Patch Changes
+
+- Update docs
+
 ## 0.0.7
 
 ### Patch Changes
