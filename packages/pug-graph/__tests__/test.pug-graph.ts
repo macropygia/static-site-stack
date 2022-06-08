@@ -1,6 +1,6 @@
 import path from 'path'
 
-import { sync } from 'fast-glob'
+import fg from 'fast-glob'
 
 import PugGraph from '../src'
 
@@ -37,7 +37,7 @@ test('Multiple Files', async () => {
     baseDir: '__tests__/tree',
   })
 
-  const files = sync('__tests__/tree/**/*.pug')
+  const files = fg.sync('__tests__/tree/**/*.pug')
 
   await Promise.all(
     files.map((file) => graph.parse(file, { insertOnly: true }))

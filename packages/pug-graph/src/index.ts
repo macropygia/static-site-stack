@@ -6,21 +6,15 @@ import Loki from 'lokijs'
 export interface UserSettings {
   baseDir?: string
   // persistent?: boolean | string
-  // indentChar?: string
   useAbsPath?: boolean
-  // formatBeforeParse?: boolean
   verbose?: boolean
-  // ignoreError?: boolean
 }
 
 export interface Settings {
   baseDir: string
   // persistent: boolean | string
-  // indentChar: string
   useAbsPath: boolean
-  // formatBeforeParse: boolean
   verbose: boolean
-  // ignoreError?: boolean
 }
 
 export interface DepsRecord {
@@ -71,11 +65,8 @@ export interface ParseSettigs {
 const defaultSettings: Settings = {
   baseDir: '',
   // persistent: false,
-  // indentChar: ' ',
   useAbsPath: false,
-  // formatBeforeParse: false,
   verbose: false,
-  // ignoreError: false,
 }
 
 /**
