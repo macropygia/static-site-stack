@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "name": "@macropygia/viewbox-to-css",
+  "version": "0.0.0",
+  "description": "Export viewBox attribute in SVG as CSS, Sass, CSV, and others.",
+  "author": "macropygia",
+  "license": "MIT",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/viewbox-to-css#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macropygia/static-site-stack.git",
+    "directory": "packages/viewbox-to-css"
+  },
+  "bugs": {
+    "url": "https://github.com/macropygia/static-site-stack/issues"
+  },
+  "keywords": [
+    "svg",
+    "viewbox",
+    "css",
+    "sass",
+    "scss"
+  ],
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "_type-check": "tsc --noEmit -p .",
+    "test": "jest",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
+    "build": "pnpm clean && pnpm tsup",
+    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm test && pnpm tsup"
+  },
+  "dependencies": {
+    "cac": "^6.7.12",
+    "fast-glob": "^3.2.11",
+    "fast-xml-parser": "^4.0.8"
+  }
+}
