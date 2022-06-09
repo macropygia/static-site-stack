@@ -1,3 +1,5 @@
+// test
+
 import fs from 'fs'
 
 import type Pug from 'pug'
