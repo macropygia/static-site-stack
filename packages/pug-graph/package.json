@@ -43,7 +43,6 @@
     "lokijs": "^1.5.12"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.1",
     "@types/lokijs": "^1.5.7",
     "fast-glob": "^3.2.11"
   }
