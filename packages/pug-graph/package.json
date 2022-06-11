@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/pug-graph",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "The pug parser to parse only include/extends",
   "author": "macropygia",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "graph"
   ],
   "files": [
-    "./dist"
+    "dist"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

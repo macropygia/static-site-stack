@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.0.6
+
+### Patch Changes
+
+- Fix files field in package.json to adjust to pnpm publish
+
 ## 0.0.5
 
 ### Patch Changes

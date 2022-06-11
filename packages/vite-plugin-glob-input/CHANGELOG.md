@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.9
+
+### Patch Changes
+
+- Fix files field in package.json to adjust to pnpm publish
+
 ## 0.0.8
 
 ### Patch Changes

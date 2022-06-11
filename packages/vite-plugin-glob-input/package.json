@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-glob-input",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Vite plugin to add files using fast-glob to build.rollupOptions.input.",
   "author": "macropygia",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "glob"
   ],
   "files": [
-    "./dist"
+    "dist"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
