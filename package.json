@@ -19,15 +19,7 @@
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --concurrent false && pnpm -r type-check"
-  },
-  "lint-staged": {
-    "**/*": [
-      "prettier --write --ignore-unknown"
-    ],
-    "**/*.{ts,d.ts,js,cjs,mjs}": [
-      "eslint --fix"
-    ]
+    "pre-commit": "pnpm exec lint-staged --concurrent false -c lint-staged.mjs"
   },
   "engines": {
     "node": ">=16.8.0",

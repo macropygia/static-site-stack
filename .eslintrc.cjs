@@ -19,7 +19,7 @@ module.exports = defineConfig({
   },
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
+      '@typescript-eslint/parser': ['.ts'],
     },
     'import/resolver': {
       typescript: {
@@ -31,7 +31,7 @@ module.exports = defineConfig({
   rules: {
     // Required settings
     'n/no-missing-import': 'off', // Required to omit extensions
-    'n/no-unsupported-features/es-syntax': 'off', // Required to use impot
+    'n/no-unsupported-features/es-syntax': 'off', // Required to use import
     // eslint-plugin-import
     'import/order': ['error', { 'newlines-between': 'always' }], // Required to use autofix
     'import/no-named-as-default-member': 'off', // When building a subproject with dual packages, some packages will not load if this option is satisfied.
