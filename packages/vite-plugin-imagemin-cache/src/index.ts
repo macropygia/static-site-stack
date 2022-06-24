@@ -209,13 +209,22 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
             const checksum: number = crc32(source)
             staticMap.set(fileName, checksum) // for db operation
 
-            const data = cacheDb.getData(fileName)
+            const cacheData = cacheDb.getData(fileName)
 
             if (
-              !data || // Data does not exists
-              data.checksum !== checksum || // Checksum does not match
-              !fse.existsSync(cachePath) // Cache file does not exists
+              cacheData && // Data exists
+              cacheData.checksum === checksum && // Checksum match
+              fse.existsSync(cachePath) // File exists
             ) {
+              // CRCが一致するキャッシュがあればコピー
+              fse.copyFileSync(cachePath, destPath)
+              logger.info(
+                ansis.cyanBright('[vite-plugin-imagemin-cache] ') +
+                  ansis.green('cache hit: ') +
+                  ansis.yellow(fileName)
+              )
+              return
+            } else {
               // Run imagemin
               const content = await processor(imageminSettings, source)
               if (content === false) {
@@ -244,15 +253,6 @@ const vitePluginImageminCache = (userSettings?: Partial<Settings>): Plugin => {
                   clear: false,
                 }
               )
-            } else {
-              // CRCが一致するキャッシュがあればコピー
-              fse.copyFileSync(cachePath, destPath)
-              logger.info(
-                ansis.cyanBright('[vite-plugin-imagemin-cache] ') +
-                  ansis.green('cache hit: ') +
-                  ansis.yellow(fileName)
-              )
-              return
             }
           })
         })

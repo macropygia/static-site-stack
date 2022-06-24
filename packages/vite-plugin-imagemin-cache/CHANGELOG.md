@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.0.7
+
+### Patch Changes
+
+- Fixed bug for handling static files
+
 ## 0.0.6
 
 ### Patch Changes
