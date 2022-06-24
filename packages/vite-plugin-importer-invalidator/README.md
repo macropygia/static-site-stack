@@ -12,7 +12,6 @@ Vite plugin to invalidate the importers of the target file when the file is modi
 - **This package is currently unstable.**
     - Breaking changes may occur without any notice, even if in patch releases.
     - See [CHANGELOG](CHANGELOG.md) for changes.
-- Suitable for a traditional static site
 - Works on dev server
 - The module of the target file must have its importers.
     - The module here means the module in HMR of Vite.

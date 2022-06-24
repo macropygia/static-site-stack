@@ -7,7 +7,7 @@
 
 **English** | [日本語](README.ja_JP.md)
 
-Vite plugin to add files using fast-glob to `build.rollupOptions.input`
+Vite plugin to add files to `build.rollupOptions.input` using fast-glob.
 
 - **This package is currently unstable.**
     - Breaking changes may occur without any notice, even if in patch releases.

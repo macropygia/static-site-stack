@@ -7,7 +7,7 @@
 
 **English** | [日本語](README.ja_JP.md)
 
-Parses `include` and `extends` in Pug files and gets dependencies.
+Parses `include` and `extends` in a Pug file and gets dependencies.
 
 - **This package is currently unstable.**
     - Breaking changes may occur without any notice, even if in patch releases.
