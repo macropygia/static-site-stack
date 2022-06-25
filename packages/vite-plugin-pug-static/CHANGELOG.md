@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.10
+
+### Patch Changes
+
+- Add `peerDependencies` to package.json
+
 ## 0.0.9
 
 ### Patch Changes

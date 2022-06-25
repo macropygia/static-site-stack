@@ -7,12 +7,12 @@
 
 [English](README.md) | **日本語**
 
-fast-glob の結果を `build.rollupOptions.input` に注入する Vite プラグイン
+fast-globの結果を `build.rollupOptions.input` に注入するViteプラグイン
 
 - このパッケージは開発中です
     - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
     - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
-- 従来型静的 Web サイト向け
+- 従来型静的Webサイト向け
 - ディレクトリ名とファイル名からエイリアスを自動生成
     - `/index.html` -> `home`
     - `/foo.html` -> `root_foo`
@@ -68,7 +68,7 @@ export default defineConfig({
 
 ### homeAlias
 
-ルートディレクトリの index に使用されるエイリアス。
+ルートディレクトリのindexに使用されるエイリアス。
 
 > /index.html -> home
 
