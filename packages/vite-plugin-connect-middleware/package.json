@@ -1,0 +1,48 @@
+{
+  "name": "@macropygia/vite-plugin-connect-middlewares",
+  "version": "0.0.1",
+  "description": "Vite plugin to ",
+  "author": "macropygia",
+  "license": "MIT",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/vite-plugin-glob-input#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/macropygia/static-site-stack.git",
+    "directory": "packages/vite-plugin-glob-input"
+  },
+  "bugs": {
+    "url": "https://github.com/macropygia/static-site-stack/issues"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "static",
+    "glob"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "type-check": "tsc --noEmit -p .",
+    "tsup": "tsup src/index.ts --dts --format esm,cjs",
+    "build": "pnpm clean && pnpm tsup",
+    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
+  },
+  "peerDependencies": {
+    "vite": "^2.0.0"
+  },
+  "devDependencies": {
+    "vite": "^2.9.12"
+  }
+}
