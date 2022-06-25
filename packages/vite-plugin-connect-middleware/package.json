@@ -1,5 +1,5 @@
 {
-  "name": "@macropygia/vite-plugin-connect-middlewares",
+  "name": "@macropygia/vite-plugin-connect-middleware",
   "version": "0.0.1",
   "description": "Vite plugin to configure middleware for dev and preview servers",
   "author": "macropygia",
