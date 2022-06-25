@@ -1,14 +1,14 @@
 {
   "name": "@macropygia/vite-plugin-connect-middlewares",
   "version": "0.0.1",
-  "description": "Vite plugin to ",
+  "description": "Vite plugin to configure middleware for dev and preview servers",
   "author": "macropygia",
   "license": "MIT",
-  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/vite-plugin-glob-input#readme",
+  "homepage": "https://github.com/macropygia/static-site-stack/tree/main/packages/vite-plugin-connect-middleware#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/macropygia/static-site-stack.git",
-    "directory": "packages/vite-plugin-glob-input"
+    "directory": "packages/vite-plugin-connect-middleware"
   },
   "bugs": {
     "url": "https://github.com/macropygia/static-site-stack/issues"
@@ -16,8 +16,8 @@
   "keywords": [
     "vite",
     "vite-plugin",
-    "static",
-    "glob"
+    "connect",
+    "middleware"
   ],
   "files": [
     "dist"
