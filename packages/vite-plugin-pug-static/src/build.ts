@@ -2,17 +2,25 @@ import fs from 'fs'
 import path from 'path'
 
 import type Pug from 'pug'
-import { compileFile, LocalsObject } from 'pug'
+import { compileFile } from 'pug'
 import type { Plugin } from 'vite'
 import { createLogger } from 'vite'
 import ansis from 'ansis'
 
-export const vitePluginPugBuild = (
-  options?: Pug.Options,
-  locals?: LocalsObject
-): Plugin => {
+/**
+ * @param options - Pug compile options
+ * @param locals - Pug locals object
+ */
+interface BuildSettings {
+  options: Pug.Options | undefined
+  locals: Pug.LocalsObject | undefined
+}
+
+export const vitePluginPugBuild = (settings: BuildSettings): Plugin => {
+  const { options, locals } = settings
   const pathMap = new Map<string, string>()
   const logger = createLogger()
+
   return {
     name: 'vite-plugin-pug-build',
     enforce: 'pre',

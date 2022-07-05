@@ -1,5 +1,12 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.11
+
+### Patch Changes
+
+- Changed to compile only when partial is updated
+- Improve error handling
+
 ## 0.0.10
 
 ### Patch Changes

@@ -1,5 +1,3 @@
-// test
-
 import type Pug from 'pug'
 import type Picomatch from 'picomatch'
 
@@ -11,6 +9,7 @@ interface Settings {
   serveOptions?: Pug.Options
   locals?: Pug.LocalsObject
   ignorePattern?: Picomatch.Glob
+  reload?: boolean
 }
 
 const defaultSettings: Settings = {}
@@ -21,13 +20,19 @@ const vitePluginPugStatic = (userSettings?: Settings) => {
     ...userSettings,
   }
 
+  const { buildOptions, serveOptions, locals, ignorePattern, reload } = settings
+
   return [
-    vitePluginPugBuild(settings.buildOptions, settings.locals),
-    vitePluginPugServe(
-      settings.serveOptions,
-      settings.locals,
-      settings.ignorePattern
-    ),
+    vitePluginPugBuild({
+      options: buildOptions,
+      locals,
+    }),
+    vitePluginPugServe({
+      options: serveOptions,
+      locals,
+      ignorePattern,
+      reload,
+    }),
   ]
 }
 
