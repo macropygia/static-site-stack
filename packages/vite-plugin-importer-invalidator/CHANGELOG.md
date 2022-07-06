@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-importer-invalidator
 
+## 0.0.11
+
+### Patch Changes
+
+- Restore `types` field in package.json
+
 ## 0.0.10
 
 ### Patch Changes

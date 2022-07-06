@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-connect-middleware",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vite plugin to configure middleware for dev and preview servers",
   "author": "macropygia",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "dist"
   ],
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",

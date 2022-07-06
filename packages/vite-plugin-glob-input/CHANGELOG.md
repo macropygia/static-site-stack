@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.12
+
+### Patch Changes
+
+- Restore `types` field in package.json
+
 ## 0.0.11
 
 ### Patch Changes

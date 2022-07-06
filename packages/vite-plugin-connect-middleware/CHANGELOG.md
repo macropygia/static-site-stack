@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-connect-middlewares
 
+## 0.0.3
+
+### Patch Changes
+
+- Restore `types` field in package.json
+
 ## 0.0.2
 
 ### Patch Changes

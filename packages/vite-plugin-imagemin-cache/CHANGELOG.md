@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.0.10
+
+### Patch Changes
+
+- Restore `types` field in package.json
+
 ## 0.0.9
 
 ### Patch Changes

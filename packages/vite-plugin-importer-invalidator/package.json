@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-importer-invalidator",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Vite plugin to invalidate the importers of the target file when the file is modified.",
   "author": "macropygia",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "dist"
   ],
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
