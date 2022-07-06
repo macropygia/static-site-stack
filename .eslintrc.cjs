@@ -30,7 +30,6 @@ module.exports = defineConfig({
   },
   rules: {
     // Required settings
-    'n/no-missing-import': 'off', // Required to omit extensions
     'n/no-unsupported-features/es-syntax': 'off', // Required to use import
     // eslint-plugin-import
     'import/order': ['error', { 'newlines-between': 'always' }], // Required to use autofix
@@ -43,11 +42,6 @@ module.exports = defineConfig({
     // Optional settings
     // for Map
     '@typescript-eslint/no-non-null-assertion': 'off',
-    // for try..catch
-    '@typescript-eslint/no-implicit-any-catch': [
-      'error',
-      { allowExplicitAny: true },
-    ],
     // loosen
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
