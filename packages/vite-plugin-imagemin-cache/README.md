@@ -12,6 +12,8 @@ Vite plugin to compress bundle and public images using imagemin. With persistent
 - **This package is currently unstable.**
     - Breaking changes may occur without any notice, even if in patch releases.
     - See [CHANGELOG](CHANGELOG.md) for changes.
+- This package [only works as ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+    - `"type": "module"` is required.
 - A filename of a bundle must contain a hash.
 
 ## Installation

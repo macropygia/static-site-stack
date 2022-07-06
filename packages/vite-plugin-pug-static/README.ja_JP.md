@@ -13,6 +13,9 @@
 - このパッケージは開発中です
     - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
     - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
+- このパッケージはESM（ES Modules）としてのみ動作します
+    - 使用するプロジェクトの `package.json` で `"type": "module"` を指定する必要があります
+    - 参考: [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 - 従来型静的Webサイト向け
 - 開発サーバではミドルウェアとして動作しHTMLへのアクセスに対してPugのコンパイル結果を出力する
 - ビルド時はPugを静的なHTMLとして出力する
@@ -27,6 +30,7 @@ import { defineConfig } from 'vite'
 import vitePluginPugStatic from '@macropygia/vite-plugin-pug-static'
 
 export default defineConfig({
+  root: 'src',
   plugins: [
     vitePluginPugStatic({
       buildOptions: { basedir: "./src" },

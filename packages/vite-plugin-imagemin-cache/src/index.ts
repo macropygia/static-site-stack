@@ -2,7 +2,8 @@ import os from 'os'
 import path from 'path'
 
 import fse from 'fs-extra'
-import pLimit, { LimitFunction } from 'p-limit'
+import pLimit from 'p-limit'
+import type { LimitFunction } from 'p-limit'
 import ansis from 'ansis'
 import { createLogger } from 'vite'
 import type { Plugin, ResolvedConfig } from 'vite'
@@ -12,9 +13,9 @@ import picomatch from 'picomatch'
 import fg from 'fast-glob'
 import { crc32 } from 'polycrc'
 
-import type { Settings, ImageminSettings } from './types'
-import { processor } from './processor'
-import { CacheDb } from './db'
+import type { Settings, ImageminSettings } from './types.js'
+import { processor } from './processor.js'
+import { CacheDb } from './db.js'
 
 const logger = createLogger()
 

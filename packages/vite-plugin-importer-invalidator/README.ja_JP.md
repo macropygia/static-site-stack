@@ -12,6 +12,9 @@
 - このパッケージは開発中です
     - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
     - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
+- このパッケージはESM（ES Modules）としてのみ動作します
+    - 使用するプロジェクトの `package.json` で `"type": "module"` を指定する必要があります
+    - 参考: [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 - 開発サーバ上で動作
 - 対象ファイルのモジュールに依存関係が格納されている必要がある
     - ここでいう「モジュール」とはViteのHMRにおけるモジュールを指す

@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-imagemin-cache",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Vite plugin to compress bundle and public images using imagemin. With persistent cache.",
   "author": "macropygia",
   "license": "MIT",
@@ -22,22 +22,22 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
     "clean": "rimraf ./dist",
     "type-check": "tsc --noEmit -p .",
-    "tsup": "tsup src/index.ts --dts --format esm,cjs",
-    "build": "pnpm clean && pnpm tsup",
-    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm tsup"
+    "tsc": "tsc -p .",
+    "build": "pnpm clean && pnpm tsc",
+    "prepublishOnly": "pnpm clean && pnpm tsc"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "dependencies": {
     "ansis": "^1.4.0",

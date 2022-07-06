@@ -1,6 +1,6 @@
 import Loki from 'lokijs'
 
-import type { CacheCollection, CacheDocument } from './types'
+import type { CacheCollection, CacheDocument } from './types.js'
 
 class CacheDb {
   #db: Loki

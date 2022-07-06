@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.12
+
+### Patch Changes
+
+- This package no longer support CommonJS (ref. [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c))
+
 ## 0.0.11
 
 ### Patch Changes

@@ -12,6 +12,8 @@ Vite plugin to add files to `build.rollupOptions.input` using fast-glob.
 - **This package is currently unstable.**
     - Breaking changes may occur without any notice, even if in patch releases.
     - See [CHANGELOG](CHANGELOG.md) for changes.
+- This package [only works as ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+    - `"type": "module"` is required.
 - Suitable for a traditional static site.
 - Auto-generate alias from directory and file name.
     - `/index.html` -> `home`

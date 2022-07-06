@@ -5,7 +5,7 @@ import imageminMozjpeg from 'imagemin-mozjpeg'
 import imageminSvgo from 'imagemin-svgo'
 // import imageminWebp from 'imagemin-webp'
 
-import type { ImageminSettings } from './types'
+import type { ImageminSettings } from './types.js'
 
 async function processor(settings: ImageminSettings, buffer: Buffer) {
   const plugins = []

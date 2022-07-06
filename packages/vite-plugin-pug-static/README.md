@@ -13,6 +13,8 @@ Vite plugin to serve multiple Pug as HTML with middleware and build to static HT
 - **This package is currently unstable.**
     - Breaking changes may occur without any notice, even if in patch releases.
     - See [CHANGELOG](CHANGELOG.md) for changes.
+- This package [only works as ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+    - `"type": "module"` is required.
 - Suitable for a traditional static site.
 - Currently, full-reload is always triggered when any file is modified.
 
@@ -24,6 +26,7 @@ import { defineConfig } from 'vite'
 import vitePluginPugStatic from '@macropygia/vite-plugin-pug-static'
 
 export default defineConfig({
+  root: 'src',
   plugins: [
     vitePluginPugStatic({
       buildOptions: { basedir: "./src" },

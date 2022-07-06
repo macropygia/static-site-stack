@@ -8,7 +8,7 @@ import { send } from 'vite'
 import type Picomatch from 'picomatch'
 import picomatch from 'picomatch'
 
-import { compilePug } from './pug'
+import { compilePug } from './pug.js'
 
 /**
  * @param options - Pug options
