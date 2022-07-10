@@ -14,9 +14,10 @@ Vite plugin to serve multiple Pug as HTML with middleware and build to static HT
     - Breaking changes may occur without any notice, even if in patch releases.
     - See [CHANGELOG](CHANGELOG.md) for changes.
 - This package [only works as ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-    - `"type": "module"` is required.
+    - `"type": "module"` is required in the package.json of the project using this plugin
 - Suitable for a traditional static site.
 - Currently, full-reload is always triggered when any file is modified.
+    - Compilation is triggered only when necessary.
 
 ## Usage
 
@@ -41,27 +42,38 @@ export default defineConfig({
 | Parameter       | Type                 | Default | Required |
 | --------------- | -------------------- | ------- | -------- |
 | `buildOptions`  | `object`             |         | No       |
+| `buildLocals`   | `object`             |         | No       |
 | `serveOptions`  | `object`             |         | No       |
-| `locals`        | `object`             |         | No       |
+| `serverLocals`  | `object`             |         | No       |
 | `ignorePattern` | `string \| string[]` |         | No       |
+| `reload`        | `boolean`            | `true`  | No       |
 
 ### buildOptions
 
 - Pug options for build.
 - Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
 
+### buildLocals
+
+- The locals object of pug for build.
+- Ref. [API Reference - Pug](https://pugjs.org/api/reference.html#pugcompilesource-options)
+
 ### serveOptions
 
 - Pug options for dev server.
 - Ref. [Options - Pug](https://pugjs.org/api/reference.html#options)
 
-### locals
+### serveLocals
 
-- The locals object of pug.
+- The locals object of pug for dev server.
 - Ref. [API Reference - Pug](https://pugjs.org/api/reference.html#pugcompilesource-options)
 
 ### ignorePattern
 
 - Ignore pattern for dev server.
 - Ref. [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
-- Compatible with [vite-plugin-inpsect](https://www.npmjs.com/package/vite-plugin-inspect) by default.
+- Compatible with [vite-plugin-inspect](https://www.npmjs.com/package/vite-plugin-inspect) by default.
+
+### reload
+
+- Enable/disable full-reload when any file is modified.

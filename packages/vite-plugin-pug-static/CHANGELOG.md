@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.14
+
+### Patch Changes
+
+- Separate locals object for dev server and build
+
 ## 0.0.13
 
 ### Patch Changes

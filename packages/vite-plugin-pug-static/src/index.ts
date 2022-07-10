@@ -6,8 +6,9 @@ import { vitePluginPugServe } from './serve.js'
 
 interface Settings {
   buildOptions?: Pug.Options
+  buildLocals?: Pug.LocalsObject
   serveOptions?: Pug.Options
-  locals?: Pug.LocalsObject
+  serveLocals?: Pug.LocalsObject
   ignorePattern?: Picomatch.Glob
   reload?: boolean
 }
@@ -20,16 +21,23 @@ const vitePluginPugStatic = (userSettings?: Settings) => {
     ...userSettings,
   }
 
-  const { buildOptions, serveOptions, locals, ignorePattern, reload } = settings
+  const {
+    buildOptions,
+    buildLocals,
+    serveOptions,
+    serveLocals,
+    ignorePattern,
+    reload,
+  } = settings
 
   return [
     vitePluginPugBuild({
       options: buildOptions,
-      locals,
+      locals: buildLocals,
     }),
     vitePluginPugServe({
       options: serveOptions,
-      locals,
+      locals: serveLocals,
       ignorePattern,
       reload,
     }),

@@ -20,7 +20,7 @@
 - 開発サーバではミドルウェアとして動作しHTMLへのアクセスに対してPugのコンパイル結果を出力する
 - ビルド時はPugを静的なHTMLとして出力する
 - 現時点ではあらゆるファイルの変更をトリガにフルリロードを行う（開発サーバ）
-    - ViteのHMRにPugとHTMLの依存関係を注入する機能が未実装のため
+    - コンパイルは必要な場合のみ実行される
 
 ## Usage
 
@@ -45,27 +45,38 @@ export default defineConfig({
 | Parameter       | Type                 | Default | Required |
 | --------------- | -------------------- | ------- | -------- |
 | `buildOptions`  | `object`             |         | No       |
+| `buildLocals`   | `object`             |         | No       |
 | `serveOptions`  | `object`             |         | No       |
-| `locals`        | `object`             |         | No       |
+| `serverLocals`  | `object`             |         | No       |
 | `ignorePattern` | `string \| string[]` |         | No       |
+| `reload`        | `boolean`            | `true`  | No       |
 
 ### buildOptions
 
 - ビルドで使用するPugのオプション
 - 参照: [Options - Pug](https://pugjs.org/api/reference.html#options)
 
+### buildLocals
+
+- ビルド時に注入するlocalsオブジェクト
+- 参照: [API Reference - Pug](https://pugjs.org/api/reference.html#pugcompilesource-options)
+
 ### serveOptions
 
 - 開発サーバで使用するPugのオプション
 - 参照: [Options - Pug](https://pugjs.org/api/reference.html#options)
 
-### locals
+### serveLocals
 
-- ビルド時に注入するlocalsオブジェクト
+- 開発サーバにおけるコンパイル時に注入するlocalsオブジェクト
 - 参照: [API Reference - Pug](https://pugjs.org/api/reference.html#pugcompilesource-options)
 
 ### ignorePattern
 
 - 開発サーバで変換から除外するパターン
 - 参照: [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
-- [vite-plugin-inpsect](https://www.npmjs.com/package/vite-plugin-inspect) に関連するアクセスは標準で除外される
+- [vite-plugin-inspect](https://www.npmjs.com/package/vite-plugin-inspect) に関連するアクセスは標準で除外される
+
+### reload
+
+- ファイルが変更された際のリロードの有効/無効を設定します

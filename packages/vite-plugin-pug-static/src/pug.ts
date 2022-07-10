@@ -36,7 +36,7 @@ const reflectAncestorsIntoModuleMap = (
 }
 
 /**
- * @param server - ViteDevServer
+ * @param moduleGraph - Module graph
  * @param url - Root relative path
  * @param pugPath - Posix path of Pug
  * @param options - Pug options

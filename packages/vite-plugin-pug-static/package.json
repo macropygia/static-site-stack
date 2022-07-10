@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-pug-static",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Vite plugin to serve multiple Pug as HTML with middleware and build to static HTML.",
   "author": "macropygia",
   "license": "MIT",
@@ -43,6 +43,7 @@
     "pug": "^3.0.2"
   },
   "peerDependencies": {
+    "pug": "^3.0.0",
     "vite": "^2.0.0"
   },
   "devDependencies": {
