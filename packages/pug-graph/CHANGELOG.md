@@ -1,5 +1,11 @@
 # @macropygia/pug-graph
 
+## 0.0.5
+
+### Patch Changes
+
+- BREAKING CHANGE: Change default for `ignorePartial` in `getImporters` from `true` to `false` .
+
 ## 0.0.4
 
 ### Patch Changes

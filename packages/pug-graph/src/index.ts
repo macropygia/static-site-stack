@@ -49,7 +49,7 @@ export interface DepsResult extends LokiObj {
 }
 
 /**
- * paserFile用設定
+ * parse関数用設定
  *
  * @param recursive - 再帰的に解析するかどうか
  * @param updateDescendants - 再帰的に解析する際に子孫もアップデートする
@@ -358,7 +358,7 @@ class PugGraph {
    */
   getImporters(
     filepath: string,
-    ignorePartial = true,
+    ignorePartial = false,
     importers: Set<string> = new Set()
   ): Set<string> {
     const result: DepsRecord[] = this.#deps.find({

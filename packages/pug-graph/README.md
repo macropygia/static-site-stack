@@ -106,7 +106,7 @@ graph.exit()
 | Parameter       | Type      | Default | Required |
 | --------------- | --------- | ------- | -------- |
 | `filepath`      | `string`  |         | Yes      |
-| `ignorePartial` | `boolean` | `true`  | No       |
+| `ignorePartial` | `boolean` | `false` | No       |
 
 - Returns: `Set<string>`
 
