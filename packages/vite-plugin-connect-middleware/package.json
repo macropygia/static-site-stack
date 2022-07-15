@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/vite-plugin-connect-middleware",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vite plugin to configure middleware for dev and preview servers",
   "author": "macropygia",
   "license": "MIT",
@@ -38,9 +38,9 @@
     "prepublishOnly": "pnpm clean && pnpm tsc"
   },
   "peerDependencies": {
-    "vite": "^2.0.0"
+    "vite": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
-    "vite": "^2.9.14"
+    "vite": "^3.0.0"
   }
 }

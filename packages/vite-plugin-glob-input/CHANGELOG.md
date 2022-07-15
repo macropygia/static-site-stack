@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.13
+
+### Patch Changes
+
+- Update peerDependencies for Vite V3
+
 ## 0.0.12
 
 ### Patch Changes

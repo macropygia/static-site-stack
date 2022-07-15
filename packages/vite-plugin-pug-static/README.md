@@ -14,7 +14,7 @@ Vite plugin to serve multiple Pug as HTML with middleware and build to static HT
     - Breaking changes may occur without any notice, even if in patch releases.
     - See [CHANGELOG](CHANGELOG.md) for changes.
 - This package [only works as ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-    - `"type": "module"` is required in the package.json of the project using this plugin
+    - `"type": "module"` is required in the package.json of the project using this plugin.
 - Suitable for a traditional static site.
 - Currently, full-reload is always triggered when any file is modified.
     - Compilation is triggered only when necessary.

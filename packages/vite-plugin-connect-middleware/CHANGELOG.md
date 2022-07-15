@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-connect-middlewares
 
+## 0.0.4
+
+### Patch Changes
+
+- Update peerDependencies for Vite V3
+
 ## 0.0.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.15
+
+### Patch Changes
+
+- Update peerDependencies for Vite V3
+
 ## 0.0.14
 
 ### Patch Changes

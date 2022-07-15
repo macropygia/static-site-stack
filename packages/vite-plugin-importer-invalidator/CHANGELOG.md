@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-importer-invalidator
 
+## 0.0.12
+
+### Patch Changes
+
+- Update peerDependencies for Vite V3
+
 ## 0.0.11
 
 ### Patch Changes

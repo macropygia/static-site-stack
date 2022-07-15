@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.0.11
+
+### Patch Changes
+
+- Update peerDependencies for Vite V3
+
 ## 0.0.10
 
 ### Patch Changes
