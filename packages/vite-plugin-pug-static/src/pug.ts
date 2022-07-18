@@ -82,7 +82,7 @@ export const compilePug = async (
     const code = compiledTemplate(locals)
 
     logger.info(
-      ansis.cyanBright('[vite-plugin-pug-static] ') +
+      ansis.cyanBright('[pug-static] ') +
         ansis.green('compiled: ') +
         ansis.yellow(path.relative(process.cwd(), pugPath))
     )

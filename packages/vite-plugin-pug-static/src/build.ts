@@ -44,7 +44,7 @@ export const vitePluginPugBuild = (settings: BuildSettings): Plugin => {
           const compiledTemplate = compileFile(pathMap.get(id)!, options)
           const html = compiledTemplate(locals)
           logger.info(
-            ansis.cyanBright('[vite-plugin-pug-static] ') +
+            ansis.cyanBright('[pug-static] ') +
               ansis.green('compiled: ') +
               ansis.yellow(path.relative(process.cwd(), pathMap.get(id)!))
           )
