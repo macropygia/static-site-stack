@@ -40,12 +40,12 @@ class CacheDb {
   }
 
   /**
-   * 使用されたバンドルのカウントをリセットし最終処理日時を更新する
+   * 使用された静的アセットのカウントをリセットし最終処理日時を更新する
    *
    * @param targets - 相対パスのファイルリスト
    * @param now - 基準時刻
    */
-  renewBundle(targets: Set<string>, now: number = new Date().getTime()) {
+  renewAsset(targets: Set<string>, now: number = new Date().getTime()) {
     this.#coll.updateWhere(
       (data: CacheDocument) => targets.has(data.fileName),
       (obj: CacheDocument) => {
@@ -57,12 +57,12 @@ class CacheDb {
   }
 
   /**
-   * DB上に存在しないバンドルを追加する
+   * DB上に存在しない静的アセットを追加する
    *
    * @param targets - 相対パスのファイルリスト
    * @param now - 基準時刻
    */
-  insertBundle(targets: Set<string>, now: number = new Date().getTime()) {
+  insertAsset(targets: Set<string>, now: number = new Date().getTime()) {
     for (const fileName of targets) {
       if (this.#coll.findOne({ fileName })) continue
       this.#coll.insert({
@@ -74,7 +74,7 @@ class CacheDb {
   }
 
   /**
-   * 静的ファイルのCRC32を返す
+   * ファイル名のデータを返す
    *
    * @param fileName - 相対パス
    * @returns CRC32
@@ -91,7 +91,7 @@ class CacheDb {
    * @param checksum - CRC32
    * @param now - 基準時刻
    */
-  upsertStatic(
+  upsertPublic(
     fileName: string,
     checksum: number,
     now: number = new Date().getTime()

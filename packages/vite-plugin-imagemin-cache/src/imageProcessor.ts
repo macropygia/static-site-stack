@@ -7,7 +7,7 @@ import imageminSvgo from 'imagemin-svgo'
 
 import type { ImageminSettings } from './types.js'
 
-async function processor(settings: ImageminSettings, buffer: Buffer) {
+async function imageProcessor(settings: ImageminSettings, buffer: Buffer) {
   const plugins = []
   if (settings.pngquant !== false)
     plugins.push(imageminPngquant(settings.pngquant))
@@ -27,4 +27,4 @@ async function processor(settings: ImageminSettings, buffer: Buffer) {
   }
 }
 
-export { processor }
+export { imageProcessor }
