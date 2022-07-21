@@ -9,7 +9,7 @@
 
 fast-globの結果を `build.rollupOptions.input` に注入するViteプラグイン
 
-- このパッケージは開発中です
+- このパッケージは不安定版です
     - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
     - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
 - このパッケージはESM（ES Modules）としてのみ動作します

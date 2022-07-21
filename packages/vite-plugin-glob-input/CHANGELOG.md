@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.14
+
+### Patch Changes
+
+- Restore `main` field in package.json
+
 ## 0.0.13
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-importer-invalidator
 
+## 0.0.13
+
+### Patch Changes
+
+- Restore `main` field in package.json
+
 ## 0.0.12
 
 ### Patch Changes

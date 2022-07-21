@@ -9,7 +9,7 @@
 
 Pugの `include` と `extends` を解析して依存関係を取得する
 
-- このパッケージは開発中です
+- このパッケージは不安定版です
     - パッチリリースを含め予告なく破壊的変更が行われる可能性があります
     - 変更点は [CHANGELOG](CHANGELOG.md) をご覧ください
 - 実行前にPrettierの [@prettier/plugin-pug](https://www.npmjs.com/package/@prettier/plugin-pug) を使用してフォーマットすることを推奨

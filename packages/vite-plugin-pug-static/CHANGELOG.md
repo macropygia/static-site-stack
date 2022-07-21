@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.16
+
+### Patch Changes
+
+- Restore `main` field in package.json
+
 ## 0.0.15
 
 ### Patch Changes
