@@ -109,10 +109,10 @@ plugins: {
 ソース上のディレクトリ構造とファイル名を維持して出力する
 
 - `asset.cachbuster` 併用可
-- `rollupOptions.output.assetFileNames` と併用可（要文字列指定）
+- `rollupOptions.output.assetFileNames` 併用可（要文字列指定）
     - 画像以外のファイルに適用される
 - `asset.useCrc` は自動的に `true` になる
-- `asset.preventOverwrite` は自動的に `true` になる
+- `asset.preventOverwrite` は自動的に `false` になる
 
 ### asset.cachebuster (>= 0.1, experimental)
 

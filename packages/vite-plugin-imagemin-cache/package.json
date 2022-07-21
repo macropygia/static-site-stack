@@ -17,7 +17,8 @@
     "vite",
     "vite-plugin",
     "imagemin",
-    "cache"
+    "cache",
+    "cachebuster"
   ],
   "files": [
     "dist"
@@ -34,6 +35,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "type-check": "tsc --noEmit -p .",
+    "test": "vitest run --coverage",
     "tsc": "tsc -p .",
     "build": "pnpm clean && pnpm tsc",
     "prepublishOnly": "pnpm clean && pnpm tsc"

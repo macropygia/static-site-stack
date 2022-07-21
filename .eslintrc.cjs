@@ -46,4 +46,15 @@ module.exports = defineConfig({
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
   },
+  overrides: [
+    {
+      files: ['packages/*/__tests__/**/*.{js,cjs,mjs,ts}', 'vitest.config.ts'],
+      env: { node: true },
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'n/no-extraneous-import': 'off',
+        'no-console': 'off',
+      },
+    },
+  ],
 })

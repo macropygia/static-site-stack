@@ -111,7 +111,7 @@ Keep directory structure and file name.
 - `rollupOptions.output.assetFileNames` can be used together if it is string.
     - Applies to non-image files.
 - `asset.useCrc` is automatically set to `true` .
-- `asset.preventOverwrite` is automatically set to `true` .
+- `asset.preventOverwrite` is automatically set to `false` .
 
 ### asset.cachebuster (>= 0.1, experimental)
 
