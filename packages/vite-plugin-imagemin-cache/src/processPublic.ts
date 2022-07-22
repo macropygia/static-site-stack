@@ -4,7 +4,6 @@ import fse from 'fs-extra'
 import fg from 'fast-glob'
 import { crc32 } from 'polycrc'
 import type { ResolvedConfig } from 'vite'
-import ansis from 'ansis'
 
 import type { Context } from './types.js'
 import { imageProcessor } from './imageProcessor.js'
@@ -61,21 +60,13 @@ export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
       ) {
         // CRCが一致するキャッシュがあればコピー
         fse.copySync(cachePath, destPath)
-        ctx.logger.info(
-          ansis.cyanBright('[imagemin-cache] ') +
-            ansis.green('cache hit: ') +
-            ansis.yellow(fileName)
-        )
+        ctx.outputLog('info', 'cache hit:', fileName)
         return
       } else {
         // Run imagemin
         const content = await imageProcessor(config.plugins, source)
         if (content === false) {
-          ctx.logger.error(
-            ansis.cyanBright('[imagemin-cache] ') +
-              ansis.green('imagemin error: ') +
-              ansis.yellow(fileName)
-          )
+          ctx.outputLog('error', 'imagemin error:', fileName)
           throw new Error(`imagemin failed: ${fileName}`)
         } else {
           await Promise.all([
@@ -83,16 +74,11 @@ export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
             fse.outputFile(destPath, content),
           ])
         }
-        ctx.logger.info(
-          ansis.cyanBright('[imagemin-cache] ') +
-            ansis.green('compressed: ') +
-            ansis.yellow(fileName) +
-            ansis.dim(
-              ` (processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
-            ),
-          {
-            clear: false,
-          }
+        ctx.outputLog(
+          'info',
+          'compressed:',
+          fileName,
+          `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
         )
       }
     })

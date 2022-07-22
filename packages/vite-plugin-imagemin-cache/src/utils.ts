@@ -3,6 +3,10 @@ import path from 'path'
 
 import type Picomatch from 'picomatch'
 import picomatch from 'picomatch'
+import { createLogger } from 'vite'
+import ansis from 'ansis'
+
+const logger = createLogger()
 
 export function initMatcher(
   pattern: Picomatch.Glob | Picomatch.Matcher | undefined
@@ -11,6 +15,20 @@ export function initMatcher(
   if (typeof pattern === 'string' || Array.isArray(pattern))
     return picomatch(pattern)
   return pattern
+}
+
+export function outputLog(
+  type: 'info' | 'warn' | 'warnOnce' | 'error',
+  green?: string,
+  yellow?: string,
+  dim?: string
+) {
+  return logger[type](
+    ansis.cyanBright('[imagemin-cache]') +
+      (green ? ansis.green(` ${green}`) : '') +
+      (yellow ? ansis.yellow(` ${yellow}`) : '') +
+      (dim ? ansis.dim(` ${dim}`) : '')
+  )
 }
 
 // Copy from utils.ts in Vite

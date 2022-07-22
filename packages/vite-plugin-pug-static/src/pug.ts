@@ -3,14 +3,12 @@ import path from 'path'
 import type Pug from 'pug'
 import { compileFile } from 'pug'
 import type { ModuleGraph, ModuleNode } from 'vite'
-import { createLogger } from 'vite'
-import ansis from 'ansis'
+
+import { outputLog } from './utils.js'
 
 interface CompiledTemplateWithDeps extends Pug.compileTemplate {
   dependencies: string[]
 }
-
-const logger = createLogger()
 
 /**
  * @param moduleGraph - Module graph
@@ -81,11 +79,7 @@ export const compilePug = async (
     // Generate HTML
     const code = compiledTemplate(locals)
 
-    logger.info(
-      ansis.cyanBright('[pug-static] ') +
-        ansis.green('compiled: ') +
-        ansis.yellow(path.relative(process.cwd(), pugPath))
-    )
+    outputLog('info', 'compiled:', path.relative(process.cwd(), pugPath))
 
     compiledModule.transformResult = { code, map }
   } catch (err: unknown) {

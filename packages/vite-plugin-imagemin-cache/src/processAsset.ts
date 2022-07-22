@@ -3,7 +3,6 @@ import path from 'path'
 import fse from 'fs-extra'
 import type Rollup from 'rollup'
 import type { ResolvedConfig } from 'vite'
-import ansis from 'ansis'
 
 import type { Context } from './types.js'
 import { imageProcessor } from './imageProcessor.js'
@@ -27,11 +26,8 @@ export async function processAsset(
         fse.existsSync(path.join(outDir, fileName))
       ) {
         delete bundle[fileName]
-        ctx.logger.info(
-          ansis.cyanBright('[imagemin-cache] ') +
-            ansis.green('skip: ') +
-            ansis.yellow(fileName)
-        )
+
+        ctx.outputLog('info', 'skip:', fileName)
         return
       }
 
@@ -40,11 +36,7 @@ export async function processAsset(
         ;(bundle[fileName] as Rollup.OutputAsset).source = await fse.readFile(
           cachePath
         )
-        ctx.logger.info(
-          ansis.cyanBright('[imagemin-cache] ') +
-            ansis.green('cache hit: ') +
-            ansis.yellow(fileName)
-        )
+        ctx.outputLog('info', 'cache hit:', fileName)
         return
       }
 
@@ -55,26 +47,17 @@ export async function processAsset(
       // imagemin
       const content = await imageProcessor(config.plugins, source)
       if (content === false) {
-        ctx.logger.error(
-          ansis.cyanBright('[imagemin-cache] ') +
-            ansis.green('imagemin error: ') +
-            ansis.yellow(fileName)
-        )
+        ctx.outputLog('error', 'imagemin error:', fileName)
         throw new Error('imagemin failed')
       } else {
         ;(bundle[fileName] as Rollup.OutputAsset).source = content
         await fse.outputFile(cachePath, content)
       }
-      ctx.logger.info(
-        ansis.cyanBright('[imagemin-cache] ') +
-          ansis.green('compressed: ') +
-          ansis.yellow(fileName) +
-          ansis.dim(
-            ` (processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
-          ),
-        {
-          clear: false,
-        }
+      ctx.outputLog(
+        'info',
+        'compressed:',
+        fileName,
+        `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
       )
     })
   })

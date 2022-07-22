@@ -1,7 +1,6 @@
 import path from 'path'
 
 import fse from 'fs-extra'
-import ansis from 'ansis'
 import type { Plugin, ResolvedConfig } from 'vite'
 import type Rollup from 'rollup'
 
@@ -13,6 +12,7 @@ import { cachebuster } from './cachebuster.js'
 import { processAsset } from './processAsset.js'
 import { processAssetWithoutHash } from './processAssetWithoutHash.js'
 import { processPublic } from './processPublic.js'
+import { processCache } from './processCache.js'
 
 const vitePluginImageminCache = (userSettings?: UserSettings): Plugin => {
   const config = initConfig(userSettings || {})
@@ -85,21 +85,15 @@ const vitePluginImageminCache = (userSettings?: UserSettings): Plugin => {
       // Nothing to do
       if (ctx.assetTargets.size === 0) return
 
-      ctx.logger.info('') // Preserve new line
-      ctx.logger.info(
-        ansis.cyanBright('[imagemin-cache] ') +
-          ansis.green('processing static asset... ')
-      )
+      console.log('') // Preserve new line
+      ctx.outputLog('info', 'processing static asset...')
 
       if (config.asset.useCrc) await processAssetWithoutHash(ctx, bundle)
       else await processAsset(ctx, viteConfig, bundle)
     },
     async closeBundle() {
       if (ctx.publicDir !== '') {
-        ctx.logger.info(
-          ansis.cyanBright('[imagemin-cache] ') +
-            ansis.green('processing public directory... ')
-        )
+        ctx.outputLog('info', 'processing public directory...')
 
         await processPublic(ctx, viteConfig)
       }
@@ -107,33 +101,7 @@ const vitePluginImageminCache = (userSettings?: UserSettings): Plugin => {
       // Cache database operations
       const now = new Date().getTime()
 
-      ctx.cacheDb.countdown()
-
-      if (config.asset.useCrc) {
-        // Static asset without hash
-        for (const [fileName, checksum] of ctx.assetHashMap) {
-          ctx.cacheDb.upsertPublic(fileName, checksum, now)
-        }
-      } else {
-        // Static asset with hash
-        ctx.cacheDb.renewAsset(ctx.assetTargets, now)
-        ctx.cacheDb.insertAsset(ctx.assetTargets, now)
-      }
-
-      for (const [fileName, checksum] of ctx.publicHashMap) {
-        ctx.cacheDb.upsertPublic(fileName, checksum, now)
-      }
-
-      // Delete expired cache files
-      const expiredFiles = ctx.cacheDb.getExpired(now)
-      await Promise.all(
-        expiredFiles.map((file): Promise<void> => {
-          return fse.remove(path.join(config.cacheDir, file.fileName))
-        })
-      )
-      ctx.cacheDb.removeExpired(now)
-
-      ctx.cacheDb.close()
+      await processCache(ctx, now)
     },
   }
 }

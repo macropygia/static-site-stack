@@ -2,7 +2,6 @@ import os from 'os'
 import path from 'path'
 
 import pLimit from 'p-limit'
-import { createLogger } from 'vite'
 
 import type {
   AssetSettings,
@@ -11,7 +10,7 @@ import type {
   Settings,
   Context,
 } from './types.js'
-import { initMatcher } from './utils.js'
+import { initMatcher, outputLog } from './utils.js'
 import { CacheDb } from './db.js'
 
 const defaultSettings: Omit<Settings, 'asset' | 'public'> = {
@@ -53,7 +52,7 @@ export function initConfig(userSettings: UserSettings): Settings {
 export function initContext(config: Settings): Context {
   const ctx: Context = {
     config,
-    logger: createLogger(),
+    outputLog,
     // resolvedPublicDir for preventDefault
     publicDir: '',
     // Compressing queue

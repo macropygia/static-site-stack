@@ -4,8 +4,8 @@ import path from 'path'
 import type Pug from 'pug'
 import { compileFile } from 'pug'
 import type { Plugin } from 'vite'
-import { createLogger } from 'vite'
-import ansis from 'ansis'
+
+import { outputLog } from './utils.js'
 
 /**
  * @param options - Pug compile options
@@ -19,7 +19,6 @@ interface BuildSettings {
 export const vitePluginPugBuild = (settings: BuildSettings): Plugin => {
   const { options, locals } = settings
   const pathMap = new Map<string, string>()
-  const logger = createLogger()
 
   return {
     name: 'vite-plugin-pug-build',
@@ -43,10 +42,10 @@ export const vitePluginPugBuild = (settings: BuildSettings): Plugin => {
         if (pathMap.has(id)) {
           const compiledTemplate = compileFile(pathMap.get(id)!, options)
           const html = compiledTemplate(locals)
-          logger.info(
-            ansis.cyanBright('[pug-static] ') +
-              ansis.green('compiled: ') +
-              ansis.yellow(path.relative(process.cwd(), pathMap.get(id)!))
+          outputLog(
+            'info',
+            'compiled:',
+            path.relative(process.cwd(), pathMap.get(id)!)
           )
           return html
         }

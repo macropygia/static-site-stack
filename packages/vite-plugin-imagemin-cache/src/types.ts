@@ -1,4 +1,4 @@
-import type { Logger, ResolvedConfig } from 'vite'
+import type { ResolvedConfig } from 'vite'
 import type Loki from 'lokijs'
 import type Picomatch from 'picomatch'
 import type { LimitFunction } from 'p-limit'
@@ -50,7 +50,12 @@ export interface UserSettings
 export interface Context {
   config: Settings
   viteConfig?: ResolvedConfig
-  logger: Logger
+  outputLog: (
+    type: 'info' | 'warn' | 'warnOnce' | 'error',
+    green?: string,
+    yellow?: string,
+    dim?: string
+  ) => void
   publicDir: string
   limit: LimitFunction
   cacheDb: CacheDb
