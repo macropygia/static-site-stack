@@ -33,7 +33,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "type-check": "tsc --noEmit -p .",
-    "test": "jest",
+    "test": "vitest run --coverage",
     "tsup": "tsup src/index.ts --dts --format esm,cjs",
     "build": "pnpm clean && pnpm tsup",
     "typedoc": "typedoc src/index.ts",

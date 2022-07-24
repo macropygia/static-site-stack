@@ -1,6 +1,7 @@
 import path from 'path'
 
 import fg from 'fast-glob'
+import { test } from 'vitest'
 
 import PugGraph from '../src/index.js'
 
@@ -43,10 +44,13 @@ test('Multiple Files', async () => {
     files.map((file) => graph.parse(file, { insertOnly: true }))
   )
 
-  console.log(graph.getImportedFiles(indexPug))
-  console.log(graph.getImporters(templatePug))
-  console.log(graph.getImporters(templatePug, false))
-  console.log(graph.getRawData())
+  console.log('getImportedFiles', graph.getImportedFiles(indexPug))
+  console.log('getImporters', graph.getImporters(templatePug))
+  console.log(
+    'getImporters(ignorePartial)',
+    graph.getImporters(templatePug, true)
+  )
+  console.log('getRawData', graph.getRawData())
 
   graph.exit()
 })
