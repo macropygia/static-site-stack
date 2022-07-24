@@ -8,8 +8,12 @@ import { build } from 'vite'
 
 import imageminPlugin from '../src/index.js'
 
+const srcdir = path.resolve(__dirname, 'src')
+const distdir = path.resolve(__dirname, 'dist')
+const cachedir = path.resolve(__dirname, 'cache')
+
 const defaultPluginConfig = {
-  cacheDir: path.resolve(__dirname, 'cache'),
+  cacheDir: cachedir,
   asset: {
     keepStructure: false,
     cachebuster: false,
@@ -29,9 +33,9 @@ function createPluginConfig(override?: any): any {
 }
 
 const defaultConfig = {
-  root: path.resolve(__dirname, 'src'),
+  root: srcdir,
   build: {
-    outDir: path.resolve(__dirname, 'dist'),
+    outDir: distdir,
     emptyOutDir: true,
   },
 }
@@ -48,14 +52,11 @@ function createConfig(buildConfig?: any, pluginConfig?: any): any {
 }
 
 beforeEach(async () => {
-  // await fse.emptyDir(path.resolve(__dirname, 'dist'))
+  // await fse.emptyDir(distdir)
 })
 
 afterAll(async () => {
-  await Promise.all([
-    fse.remove(path.resolve(__dirname, 'dist')),
-    fse.remove(path.resolve(__dirname, 'cache')),
-  ])
+  await Promise.all([fse.remove(distdir), fse.remove(cachedir)])
 })
 
 test('default', async () => {

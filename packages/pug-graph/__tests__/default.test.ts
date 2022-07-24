@@ -2,15 +2,15 @@ import path from 'path'
 
 import fg from 'fast-glob'
 
-import PugGraph from '../src'
+import PugGraph from '../src/index.js'
 
-const indexPug = '__tests__/tree/index.pug'
-const indexPugAbs = path.resolve('__tests__/tree/index.pug')
-const templatePug = '__tests__/tree/templates/_global.pug'
+const indexPug = '__tests__/src/index.pug'
+const indexPugAbs = path.resolve('__tests__/src/index.pug')
+const templatePug = '__tests__/src/templates/_global.pug'
 
 test('Single File', async () => {
   const graph = new PugGraph({
-    baseDir: '__tests__/tree',
+    baseDir: '__tests__/src',
     verbose: true,
   })
 
@@ -22,7 +22,7 @@ test('Single File', async () => {
 
 test('Single File (Recursive)', async () => {
   const graph = new PugGraph({
-    baseDir: '__tests__/tree',
+    baseDir: '__tests__/src',
     useAbsPath: true,
   })
 
@@ -34,10 +34,10 @@ test('Single File (Recursive)', async () => {
 
 test('Multiple Files', async () => {
   const graph = new PugGraph({
-    baseDir: '__tests__/tree',
+    baseDir: '__tests__/src',
   })
 
-  const files = fg.sync('__tests__/tree/**/*.pug')
+  const files = fg.sync('__tests__/src/**/*.pug')
 
   await Promise.all(
     files.map((file) => graph.parse(file, { insertOnly: true }))
