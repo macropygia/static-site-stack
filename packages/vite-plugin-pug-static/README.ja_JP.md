@@ -31,6 +31,15 @@ import vitePluginPugStatic from '@macropygia/vite-plugin-pug-static'
 
 export default defineConfig({
   root: 'src',
+  build: {
+    rollupOptions: {
+      input: {
+        home: 'src/index.pug',
+        foo: 'src/foo/index.pug',
+        bar: 'src/bar/index.pug',
+      }
+    }
+  },
   plugins: [
     vitePluginPugStatic({
       buildOptions: { basedir: "./src" },
