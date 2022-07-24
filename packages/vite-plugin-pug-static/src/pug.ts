@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import type Pug from 'pug'
 import { compileFile } from 'pug'
