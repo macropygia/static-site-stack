@@ -83,6 +83,7 @@ export default defineConfig({
 ### ignorePattern
 
 - 開発サーバで変換から除外するパターン
+- ルート相対パスで指定する（ `/` から始まる）
 - 参照: [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
 - [vite-plugin-inspect](https://www.npmjs.com/package/vite-plugin-inspect) に関連するアクセスは標準で除外される
 

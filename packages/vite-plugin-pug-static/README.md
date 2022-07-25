@@ -80,6 +80,7 @@ export default defineConfig({
 ### ignorePattern
 
 - Ignore pattern for dev server.
+- Use root-relative path. (Starts with `/` )
 - Ref. [Globbing features - Picomatch](https://github.com/micromatch/picomatch#globbing-features)
 - Compatible with [vite-plugin-inspect](https://www.npmjs.com/package/vite-plugin-inspect) by default.
 
