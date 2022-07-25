@@ -1,0 +1,25 @@
+flag_management:
+  default_rules:
+    carryforward: true
+  individual_flags:
+    - name: pug-graph
+      paths:
+        - packages/pug-graph
+    - name: vite-plugin-connect-middleware
+      paths:
+        - packages/vite-plugin-connect-middleware
+    - name: vite-plugin-glob-input
+      paths:
+        - packages/vite-plugin-glob-input
+    - name: vite-plugin-imagemin-cache
+      paths:
+        - packages/vite-plugin-imagemin-cache
+    - name: vite-plugin-pug-static
+      paths:
+        - packages/vite-plugin-pug-static
+
+ignore:
+  - '**/coverage'
+  - '**/__tests__'
+  - '**/dist'
+  - '**/docs'
