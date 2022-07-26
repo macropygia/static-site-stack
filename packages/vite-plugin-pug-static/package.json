@@ -37,7 +37,7 @@
     "test": "vitest run --coverage",
     "tsc": "tsc -p .",
     "build": "pnpm clean && pnpm tsc",
-    "prepublishOnly": "pnpm clean && pnpm tsc"
+    "prepublishOnly": "pnpm test && pnpm clean && pnpm tsc"
   },
   "dependencies": {
     "ansis": "^1.4.0",

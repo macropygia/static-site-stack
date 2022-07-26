@@ -37,7 +37,7 @@
     "tsup": "tsup src/index.ts --dts --format esm,cjs",
     "build": "pnpm clean && pnpm tsup",
     "typedoc": "typedoc src/index.ts",
-    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm test && pnpm tsup"
+    "prepublishOnly": "pnpm type-check && pnpm test && pnpm clean && pnpm tsup"
   },
   "dependencies": {
     "lokijs": "^1.5.12"

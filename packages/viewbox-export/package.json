@@ -37,10 +37,10 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "_type-check": "tsc --noEmit -p .",
-    "_test": "jest",
-    "tsup": "tsup src/index.ts --dts --format esm,cjs",
-    "build": "pnpm clean && pnpm tsup",
-    "prepublishOnly": "pnpm clean && pnpm type-check && pnpm test && pnpm tsup"
+    "_test": "vitest run --coverage",
+    "_tsup": "tsup src/index.ts --dts --format esm,cjs",
+    "_build": "pnpm clean && pnpm tsup",
+    "_prepublishOnly": "pnpm type-check && pnpm test && pnpm clean && pnpm tsup"
   },
   "dependencies": {
     "cac": "^6.7.12",
