@@ -56,34 +56,34 @@ export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
 
       const cacheData = ctx.cacheDb.getData(fileName)
 
+      // Copy from cache
       if (
         cacheData && // Data exists
         cacheData.checksum === checksum && // Checksum match
         fse.existsSync(cachePath) // File exists
       ) {
-        // CRCが一致するキャッシュがあればコピー
         fse.copySync(cachePath, destPath)
         ctx.outputLog('info', 'cache hit:', fileName)
         return
-      } else {
-        // Run imagemin
-        const content = await imageProcessor(config.plugins, source)
-        if (content === false) {
-          ctx.outputLog('error', 'imagemin error:', fileName)
-          throw new Error(`imagemin failed: ${fileName}`)
-        } else {
-          await Promise.all([
-            fse.outputFile(cachePath, content),
-            fse.outputFile(destPath, content),
-          ])
-        }
-        ctx.outputLog(
-          'info',
-          'compressed:',
-          fileName,
-          `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
-        )
       }
+
+      // Run imagemin
+      const content = await imageProcessor(config.plugins, source)
+      if (content === false) {
+        ctx.outputLog('error', 'imagemin error:', fileName)
+        throw new Error(`imagemin failed: ${fileName}`)
+      } else {
+        await Promise.all([
+          fse.outputFile(cachePath, content),
+          fse.outputFile(destPath, content),
+        ])
+      }
+      ctx.outputLog(
+        'info',
+        'compressed:',
+        fileName,
+        `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
+      )
     })
   })
   await Promise.all(queue)
