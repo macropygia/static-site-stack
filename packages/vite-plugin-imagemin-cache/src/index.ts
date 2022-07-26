@@ -43,16 +43,16 @@ const vitePluginImageminCache = (userSettings?: UserSettings): Plugin => {
     },
     async generateBundle(_options, bundle: Rollup.OutputBundle) {
       // Get target files in the bundle
-      for (const [fileName, asset] of Object.entries(bundle)) {
-        // Asset only
-        if (asset.type !== 'asset' || !asset.name) continue
-        // Plugin specified filetype only
-        if (ctx.targetExtentions.has(path.extname(fileName))) {
-          // Excluding
-          if (ctx.excludeMatcher && ctx.excludeMatcher(asset.name)) continue
-          ctx.assetTargets.add(fileName)
-        }
-      }
+      Object.entries(bundle).forEach(([fileName, asset]) => {
+        if (
+          asset.type !== 'asset' || // Asset only
+          !asset.name || // File only
+          !ctx.targetExtentions.has(path.extname(fileName)) || // Plugin specified filetype only
+          (ctx.excludeMatcher && ctx.excludeMatcher(asset.name)) // Excluding
+        )
+          return
+        ctx.assetTargets.add(fileName)
+      })
 
       // Nothing to do
       if (ctx.assetTargets.size === 0) return
