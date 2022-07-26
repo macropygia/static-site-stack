@@ -5,9 +5,12 @@ import type { Plugin, ResolvedConfig } from 'vite'
 import type Rollup from 'rollup'
 
 import type { UserSettings } from './types.js'
-import { initConfig, initContext } from './config.js'
-import { getResolvedRoot, getResolvedPublicDir } from './utils.js'
-import { setupRollupOptionsForKeepStructure } from './keepStructure.js'
+import {
+  initConfig,
+  initContext,
+  updateConfig,
+  updateViteUserConfig,
+} from './config.js'
 import { cachebuster } from './cachebuster.js'
 import { processAsset } from './processAsset.js'
 import { processAssetWithoutHash } from './processAssetWithoutHash.js'
@@ -26,42 +29,11 @@ const vitePluginImageminCache = (userSettings?: UserSettings): Plugin => {
     enforce: 'post',
     apply: 'build',
     config(viteUserConfig) {
-      const root = getResolvedRoot(viteUserConfig.root)
-      ctx.publicDir = getResolvedPublicDir(viteUserConfig.publicDir, root)
-
-      // Prevent Vite default copy function for public directory
-      if (config.public.preventDefault) viteUserConfig.publicDir = false
-
-      if (config.asset.keepStructure) {
-        config.asset.preventOverwrite = false
-        return setupRollupOptionsForKeepStructure(ctx, viteUserConfig)
-      }
-      return
+      return updateViteUserConfig(ctx, config, viteUserConfig)
     },
     configResolved(resolvedConfig: ResolvedConfig) {
       viteConfig = resolvedConfig
-
-      // Determine if `useCRC` should be used
-      if (Array.isArray(viteConfig.build.rollupOptions.output)) {
-        // If output is an array, set `true`
-        config.asset.useCrc = true
-      } else if (
-        viteConfig.build.rollupOptions.output?.assetFileNames &&
-        typeof viteConfig.build.rollupOptions.output.assetFileNames ===
-          'string' &&
-        !viteConfig.build.rollupOptions.output.assetFileNames.includes('[hash]')
-      ) {
-        // If assetFileNames is a string and doesn't contain [hash], set `true`
-        config.asset.useCrc = true
-      }
-      // If keepStructure is `true`, set `true`
-      if (config.asset.keepStructure) config.asset.useCrc = true
-
-      // Force overwrite when emptyOutDir is true
-      if (viteConfig.build.emptyOutDir) {
-        config.asset.preventOverwrite = false
-        config.public.preventOverwrite = false
-      }
+      updateConfig(config, viteConfig)
     },
     transformIndexHtml(html) {
       // Cachebuster for static assets

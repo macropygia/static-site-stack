@@ -8,10 +8,7 @@ import type { ResolvedConfig } from 'vite'
 import type { Context } from './types.js'
 import { imageProcessor } from './imageProcessor.js'
 
-export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
-  const { config } = ctx
-  const outDir = viteConfig.build.outDir
-
+const getTargets = (ctx: Context): Set<string> => {
   const fgResults = fg.sync(
     [...ctx.targetExtentions].map(
       (ext) =>
@@ -20,9 +17,8 @@ export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
           .replaceAll(path.sep, '/')}/**/*${ext}`
     )
   )
-
   // Convert cwd relative path to root relative path
-  ctx.publicTargets = new Set(
+  return new Set(
     fgResults.flatMap((relPath) => {
       const fileName = path.relative(
         ctx.publicDir,
@@ -32,6 +28,13 @@ export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
       return fileName
     })
   )
+}
+
+export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
+  const { config } = ctx
+  const outDir = viteConfig.build.outDir
+
+  ctx.publicTargets = getTargets(ctx)
 
   // Add files to compressing queue
   const queue = [...ctx.publicTargets].map(async (fileName) => {
