@@ -52,36 +52,39 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm -r publish
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       #- name: DEBUG Emulate changesets publish action
       #  id: changesets
       #  run: |
-      #    pnpm -r test
+      #    pnpm -r coverage
       #    data='[{"name": "@macropygia/vite-plugin-imagemin-cache", "version": "0.0.0"}, {"name": "@macropygia/vite-plugin-pug-static", "version": "0.0.0"}]'
       #    echo "::set-output name=publishedPackages::$data"
       #    echo "::set-output name=published::true"
 
-      - name: DEBUG / Show changesets outputs
-        run: |
-          echo ${{ steps.changesets.outputs.published }}
-          echo ${{ steps.changesets.outputs.publishedPackages }}
+      # Waiting for pnpm support for changesets
 
-      - name: Convert publishedPackages to comma separated string using jq
-        id: jq
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          flags=`echo '${{ steps.changesets.outputs.publishedPackages }}' | jq '.[].name | split("/") | .[1]' | jq -s -j 'join(",")'`
-          echo "::set-output name=codecovFlags::$flags"
-          files=`echo '${{ steps.changesets.outputs.publishedPackages }}' | jq '.[].name | split("/") | .[1]' | jq -s -j 'map("packages/" + . + "/coverage/coverage-final.json") | join(",")'`
-          echo "::set-output name=codecovFiles::$files"
+      # - name: DEBUG / Show changesets outputs
+      #   run: |
+      #     echo ${{ steps.changesets.outputs.published }}
+      #     echo ${{ steps.changesets.outputs.publishedPackages }}
 
-      - name: Upload coverage to Codecov
-        if: steps.changesets.outputs.published == 'true'
-        uses: codecov/codecov-action@v3
-        with:
-          flags: ${{ steps.jq.outputs.codecovFlags }}
-          files: ${{ steps.jq.outputs.codecovFiles }}
-          # verbose: true
-          # dry_run: true
+      # - name: Convert publishedPackages to comma separated string using jq
+      #   id: jq
+      #   if: steps.changesets.outputs.published == 'true'
+      #   run: |
+      #     flags=`echo '${{ steps.changesets.outputs.publishedPackages }}' | jq '.[].name | split("/") | .[1]' | jq -s -j 'join(",")'`
+      #     echo "::set-output name=codecovFlags::$flags"
+      #     files=`echo '${{ steps.changesets.outputs.publishedPackages }}' | jq '.[].name | split("/") | .[1]' | jq -s -j 'map("packages/" + . + "/coverage/coverage-final.json") | join(",")'`
+      #     echo "::set-output name=codecovFiles::$files"
+
+      # - name: Upload coverage to Codecov
+      #   if: steps.changesets.outputs.published == 'true'
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     flags: ${{ steps.jq.outputs.codecovFlags }}
+      #     files: ${{ steps.jq.outputs.codecovFiles }}
+      #     # verbose: true
+      #     # dry_run: true
