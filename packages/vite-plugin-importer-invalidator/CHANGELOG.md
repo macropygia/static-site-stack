@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-importer-invalidator
 
+## 0.0.14
+
+### Patch Changes
+
+- 1611014: Bump dependencies
+
 ## 0.0.13
 
 ### Patch Changes
