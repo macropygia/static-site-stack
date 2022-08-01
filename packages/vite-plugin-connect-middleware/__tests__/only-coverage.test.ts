@@ -27,7 +27,7 @@ const defaultConfig = (pluginConfig: Settings): UserConfig => ({
   plugins: [middlewarePlugin(pluginConfig)],
 })
 
-test('preview', async () => {
+test('dev', async () => {
   const server = await createServer(
     defaultConfig({
       dev: middleware,
@@ -36,9 +36,11 @@ test('preview', async () => {
   )
   await server.listen()
   server.printUrls()
+  await server.close()
 })
 
-test('dev', async () => {
+test('preview', async () => {
   const server = await preview(defaultConfig(middleware))
   server.printUrls()
+  server.httpServer.close()
 })

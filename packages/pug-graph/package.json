@@ -33,11 +33,12 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "type-check": "tsc --noEmit -p .",
-    "test": "vitest run --coverage",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
     "tsup": "tsup src/index.ts --dts --format esm,cjs",
     "build": "pnpm clean && pnpm tsup",
     "typedoc": "typedoc src/index.ts",
-    "prepublishOnly": "pnpm type-check && pnpm test && pnpm clean && pnpm tsup"
+    "prepublishOnly": "pnpm type-check && pnpm coverage && pnpm build"
   },
   "dependencies": {
     "lokijs": "^1.5.12"
