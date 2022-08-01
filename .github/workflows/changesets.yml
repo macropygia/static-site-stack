@@ -64,6 +64,11 @@ jobs:
       #    echo "::set-output name=publishedPackages::$data"
       #    echo "::set-output name=published::true"
 
+      - name: DEBUG / Show changesets outputs
+        run: |
+          echo ${{ steps.changesets.outputs.published }}
+          echo ${{ steps.changesets.outputs.publishedPackages }}
+
       - name: Convert publishedPackages to comma separated string using jq
         id: jq
         if: steps.changesets.outputs.published == 'true'
