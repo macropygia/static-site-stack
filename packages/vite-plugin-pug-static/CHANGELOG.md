@@ -1,5 +1,12 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.17
+
+### Patch Changes
+
+- c60881e: Bump dependencies
+- c60881e: Update docs
+
 ## 0.0.16
 
 ### Patch Changes
