@@ -1,15 +1,22 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.1.1
+
+### Patch Changes
+
+- c60881e: Bump dependencies
+- c60881e: Update docs
+
 ## 0.1.0
 
 ### Minor Changes
 
 - Add new features as experimental
-    - Keep directory structure and file name
-    - Cachebuster for HTML
-    - Support for static assets does not contain a hash
-    - Diff build support
-    - Efficient public directory processing
+  - Keep directory structure and file name
+  - Cachebuster for HTML
+  - Support for static assets does not contain a hash
+  - Diff build support
+  - Efficient public directory processing
 
 ### Patch Changes
 
