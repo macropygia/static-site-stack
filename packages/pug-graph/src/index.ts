@@ -7,14 +7,12 @@ export interface UserSettings {
   baseDir?: string
   // persistent?: boolean | string
   useAbsPath?: boolean
-  verbose?: boolean
 }
 
 export interface Settings {
   baseDir: string
   // persistent: boolean | string
   useAbsPath: boolean
-  verbose: boolean
 }
 
 export interface DepsRecord {
@@ -66,7 +64,6 @@ const defaultSettings: Settings = {
   baseDir: '',
   // persistent: false,
   useAbsPath: false,
-  verbose: false,
 }
 
 /**
@@ -271,13 +268,7 @@ class PugGraph {
           // 依存ファイルに追加
           if (this.#settings.useAbsPath) deps.add(path.resolve(joinedPath))
           else deps.add(joinedPath)
-
-          if (this.#settings.verbose) console.log(row, joinedPath)
-        } else if (this.#settings.verbose) {
-          console.log(row)
         }
-      } else if (this.#settings.verbose) {
-        console.log(row, 'commented out')
       }
     }
     return { deps, commentPrefix, row }
@@ -378,7 +369,9 @@ class PugGraph {
    * @returns DBのdump
    */
   getRawData(): DepsResult[] {
-    return this.#deps.chain().find().data()
+    return this.#deps.chain().find().data({
+      removeMeta: true,
+    })
   }
 
   /**
