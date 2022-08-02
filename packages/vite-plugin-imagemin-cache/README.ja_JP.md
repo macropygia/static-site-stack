@@ -92,6 +92,7 @@ imageminプラグインの設定
     - [imagemin-svgo](https://www.npmjs.com/package/imagemin-svgo) ( `.svg` )
 - 設定が空のプラグインは標準設定で実行される
 - `false` を指定したプラグインは無効化される
+- 画質に関係する設定を変更した場合はキャッシュを削除する必要がある
 
 #### 設定例
 

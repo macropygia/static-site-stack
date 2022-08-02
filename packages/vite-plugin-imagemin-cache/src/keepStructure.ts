@@ -25,10 +25,10 @@ export function setupRollupOptionsForKeepStructure(
     build: {
       rollupOptions: {
         output: {
-          assetFileNames: (chunkInfo: Rollup.PreRenderedAsset) => {
-            if (!chunkInfo.name) return defaultAssetFileNames
-            if (ctx.targetExtentions.has(path.extname(chunkInfo.name))) {
-              const rel = path.relative(root, chunkInfo.name)
+          assetFileNames: (assetInfo: Rollup.PreRenderedAsset) => {
+            if (!assetInfo.name) return defaultAssetFileNames
+            if (ctx.targetExtentions.has(path.extname(assetInfo.name))) {
+              const rel = path.relative(root, assetInfo.name)
               const assetFileName =
                 path.dirname(rel) === '.'
                   ? '[name].[ext]'

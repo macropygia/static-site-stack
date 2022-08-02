@@ -91,6 +91,7 @@ Imagemin plugin settings.
     - [imagemin-svgo](https://www.npmjs.com/package/imagemin-svgo) ( `.svg` )
 - If the setting is empty, the plugin will run with its default settings.
 - If set to `false` , it will be disabled.
+- If settings about quality have changed, the cache must be cleared.
 
 #### Example
 
