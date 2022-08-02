@@ -14,7 +14,7 @@ import { compilePug } from './pug.js'
 /**
  * @param options - Pug options
  * @param locals - Pug locals object
- * @param ignorePattern - Ignore patterns for converting HTML to Pug
+ * @param ignorePattern - Ignore patterns for converting Pug to HTML
  * @param reload - Reload settings (Currently, only enable/disable control)
  */
 interface ServeSettings {

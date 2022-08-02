@@ -36,7 +36,7 @@ const reflectAncestorsIntoModuleMap = (
 /**
  * @param moduleGraph - Module graph
  * @param url - Root relative path
- * @param pugPath - Posix path of Pug
+ * @param pugPath - Absolute path of Pug (POSIX)
  * @param options - Pug options
  * @param locals - Pug locals object
  */
