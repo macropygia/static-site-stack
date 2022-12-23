@@ -1,8 +1,15 @@
 import path from 'node:path'
 
+import fse from 'fs-extra'
 import axios from 'axios'
 import { describe, beforeAll, afterAll, test, expect } from 'vitest'
-import { createServer, preview, PreviewServer, ViteDevServer } from 'vite'
+import {
+  createServer,
+  build,
+  preview,
+  PreviewServer,
+  ViteDevServer,
+} from 'vite'
 import type { UserConfig } from 'vite'
 
 import middlewarePlugin, { Middleware, Settings } from '../src/index.js'
@@ -76,6 +83,12 @@ describe('dev', () => {
 describe('preview', () => {
   let server: PreviewServer
   beforeAll(async () => {
+    await build({
+      root: srcdir,
+      build: {
+        outDir: distdir,
+      },
+    })
     server = await preview(defaultConfig(middleware))
     server.printUrls()
   })
@@ -102,5 +115,6 @@ describe('preview', () => {
   })
   afterAll(async () => {
     server.httpServer.close()
+    await Promise.all([fse.remove(distdir)])
   })
 })
