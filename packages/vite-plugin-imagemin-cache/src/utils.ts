@@ -31,24 +31,27 @@ export function outputLog(
   )
 }
 
-// Copy from utils.ts in Vite
+// Copy from Vite
 
+// https://github.com/vitejs/vite/blob/b9511f1ed8e36a618214944c69e2de6504ebcb3c/packages/vite/src/node/utils.ts#L220
 export const isWindows = os.platform() === 'win32'
 
+// https://github.com/vitejs/vite/blob/b9511f1ed8e36a618214944c69e2de6504ebcb3c/packages/vite/src/node/utils.ts#L53-L55
 export function slash(p: string): string {
   return p.replace(/\\/g, '/')
 }
 
+// https://github.com/vitejs/vite/blob/b9511f1ed8e36a618214944c69e2de6504ebcb3c/packages/vite/src/node/utils.ts#L224-L226
 export function normalizePath(id: string): string {
   return path.posix.normalize(isWindows ? slash(id) : id)
 }
 
-// Copy from config.ts in Vite
-
+// https://github.com/vitejs/vite/blob/b9511f1ed8e36a618214944c69e2de6504ebcb3c/packages/vite/src/node/config.ts#L460-L462
 export function getResolvedRoot(root: string | undefined) {
   return normalizePath(root ? path.resolve(root) : process.cwd())
 }
 
+// https://github.com/vitejs/vite/blob/b9511f1ed8e36a618214944c69e2de6504ebcb3c/packages/vite/src/node/config.ts#L587-L593
 export function getResolvedPublicDir(
   publicDir: string | false | undefined,
   resolvedRoot: string

@@ -51,7 +51,6 @@ export default defineConfig({
 | `concurrency`            | `number`             | `os.cpus().length`       | No       |
 | `exclude`                | `string \| string[]` |                          | No       |
 | `plugins`                | `object`             | `{}`                     | No       |
-| `asset.keepStructure`    | `boolean`            | `false`                  | No       |
 | `asset.cachbuster`       | `boolean \| string`  | `false`                  | No       |
 | `asset.useCrc`           | `boolean`            | (Auto)                   | No       |
 | `asset.preventOverwrite` | `boolean`            | `false`                  | No       |
@@ -103,16 +102,6 @@ plugins: {
   svgo: { plugins: [ ... ] },
 },
 ```
-
-### asset.keepStructure (>= 0.1, experimental)
-
-Keep directory structure and file name.
-
-- `asset.cachebuster` can be used together.
-- `rollupOptions.output.assetFileNames` can be used together if it is string.
-    - Applies to non-image files.
-- `asset.useCrc` is automatically set to `true` .
-- `asset.preventOverwrite` is automatically set to `false` .
 
 ### asset.cachebuster (>= 0.1, experimental)
 

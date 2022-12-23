@@ -17,7 +17,8 @@ const cachedir = path.resolve(__dirname, 'cache')
 const defaultPluginConfig = {
   cacheDir: cachedir,
   asset: {
-    keepStructure: false,
+    // Disable keepStructure (2022-12-22)
+    // keepStructure: false,
     cachebuster: false,
     useCrc: false,
     preventOverwrite: false,
@@ -39,6 +40,11 @@ const defaultConfig = {
   build: {
     outDir: distdir,
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[hash].[ext]', // Disable keepStructure (2022-12-22)
+      },
+    },
   },
 }
 
@@ -103,63 +109,63 @@ test('preventOverwrite / expire (preparing)', async () => {
   )
 })
 
-test('keepStructure and cachebuster', async () => {
-  await build(
-    createConfig(
-      {},
-      createPluginConfig({
-        asset: {
-          keepStructure: true,
-          cachebuster: true,
-        },
-      })
-    )
-  )
-  expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2499871409,\\"__tests__/dist/test.jpg\\":239154759,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/subdir/test.svg\\":160342448}"'
-  )
-})
+// test('keepStructure and cachebuster', async () => {
+//   await build(
+//     createConfig(
+//       {},
+//       createPluginConfig({
+//         asset: {
+//           keepStructure: true,
+//           cachebuster: true,
+//         },
+//       })
+//     )
+//   )
+//   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
+//     '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2499871409,\\"__tests__/dist/test.jpg\\":239154759,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/subdir/test.svg\\":160342448}"'
+//   )
+// })
 
-test('keepStructure with cache', async () => {
-  await build(
-    createConfig(
-      {},
-      createPluginConfig({
-        asset: {
-          keepStructure: true,
-          cachebuster: true,
-        },
-      })
-    )
-  )
-  expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2499871409,\\"__tests__/dist/test.jpg\\":239154759,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/subdir/test.svg\\":160342448}"'
-  )
-})
+// test('keepStructure with cache', async () => {
+//   await build(
+//     createConfig(
+//       {},
+//       createPluginConfig({
+//         asset: {
+//           keepStructure: true,
+//           cachebuster: true,
+//         },
+//       })
+//     )
+//   )
+//   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
+//     '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2499871409,\\"__tests__/dist/test.jpg\\":239154759,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/subdir/test.svg\\":160342448}"'
+//   )
+// })
 
-test('cachebuster with string / set assetFileNames / expire', async () => {
-  await build(
-    createConfig(
-      {
-        rollupOptions: {
-          output: {
-            assetFileNames: `another/[name].[hash].[ext]`,
-          },
-        },
-      },
-      createPluginConfig({
-        expireDuration: 0,
-        asset: {
-          keepStructure: true,
-          cachebuster: '?v=',
-        },
-      })
-    )
-  )
-  expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":1979819173,\\"__tests__/dist/test.jpg\\":239154759,\\"__tests__/dist/another/index.28a21df5.css\\":3207623224,\\"__tests__/dist/subdir/test.svg\\":160342448}"'
-  )
-})
+// test('cachebuster with string / set assetFileNames / expire', async () => {
+//   await build(
+//     createConfig(
+//       {
+//         rollupOptions: {
+//           output: {
+//             assetFileNames: `another/[name].[hash].[ext]`,
+//           },
+//         },
+//       },
+//       createPluginConfig({
+//         expireDuration: 0,
+//         asset: {
+//           keepStructure: true,
+//           cachebuster: '?v=',
+//         },
+//       })
+//     )
+//   )
+//   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
+//     '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":1979819173,\\"__tests__/dist/test.jpg\\":239154759,\\"__tests__/dist/another/index.28a21df5.css\\":3207623224,\\"__tests__/dist/subdir/test.svg\\":160342448}"'
+//   )
+// })
 
 test('assetFileNames without [hash] / exclude with array', async () => {
   await build(

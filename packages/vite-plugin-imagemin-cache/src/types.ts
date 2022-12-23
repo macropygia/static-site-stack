@@ -18,7 +18,8 @@ export interface ImageminSettings {
 }
 
 export interface AssetSettings {
-  keepStructure: boolean
+  // Disable keepStructure (2022-12-22)
+  // keepStructure: boolean
   cachebuster: boolean | string
   useCrc: boolean
   preventOverwrite: boolean

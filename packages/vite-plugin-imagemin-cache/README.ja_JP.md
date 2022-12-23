@@ -52,7 +52,6 @@ export default defineConfig({
 | `concurrency`            | `number`             | `os.cpus().length`       | No       |
 | `exclude`                | `string \| string[]` |                          | No       |
 | `plugins`                | `object`             | `{}`                     | No       |
-| `asset.keepStructure`    | `boolean`            | `false`                  | No       |
 | `asset.cachbuster`       | `boolean \| string`  | `false`                  | No       |
 | `asset.useCrc`           | `boolean`            | (自動)                   | No       |
 | `asset.preventOverwrite` | `boolean`            | `false`                  | No       |
@@ -104,16 +103,6 @@ plugins: {
   svgo: { plugins: [ ... ] },
 },
 ```
-
-### asset.keepStructure (>= 0.1, experimental)
-
-ソース上のディレクトリ構造とファイル名を維持して出力する
-
-- `asset.cachbuster` 併用可
-- `rollupOptions.output.assetFileNames` 併用可（要文字列指定）
-    - 画像以外のファイルに適用される
-- `asset.useCrc` は自動的に `true` になる
-- `asset.preventOverwrite` は自動的に `false` になる
 
 ### asset.cachebuster (>= 0.1, experimental)
 

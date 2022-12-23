@@ -18,7 +18,8 @@ import {
   getResolvedPublicDir,
 } from './utils.js'
 import { CacheDb } from './db.js'
-import { setupRollupOptionsForKeepStructure } from './keepStructure.js'
+// Disable keepStructure (2022-12-22)
+// import { setupRollupOptionsForKeepStructure } from './keepStructure.js'
 
 const defaultSettings: Omit<Settings, 'asset' | 'public'> = {
   cacheDir: 'node_modules/.imagemin',
@@ -32,7 +33,8 @@ const defaultSettings: Omit<Settings, 'asset' | 'public'> = {
 }
 
 const defaultAssetSettings: AssetSettings = {
-  keepStructure: false,
+  // Disable keepStructure (2022-12-22)
+  // keepStructure: false,
   cachebuster: false,
   useCrc: false,
   preventOverwrite: false,
@@ -98,10 +100,11 @@ export function updateViteUserConfig(
   // Prevent Vite default copy function for public directory
   if (config.public.preventDefault) viteUserConfig.publicDir = false
 
-  if (config.asset.keepStructure) {
-    config.asset.preventOverwrite = false
-    return setupRollupOptionsForKeepStructure(ctx, viteUserConfig)
-  }
+  // Disable keepStructure (2022-12-22)
+  // if (config.asset.keepStructure) {
+  //   config.asset.preventOverwrite = false
+  //   return setupRollupOptionsForKeepStructure(ctx, viteUserConfig)
+  // }
   return
 }
 
@@ -119,7 +122,8 @@ export function updateConfig(config: Settings, viteConfig: ResolvedConfig) {
     config.asset.useCrc = true
   }
   // If keepStructure is `true`, set `true`
-  if (config.asset.keepStructure) config.asset.useCrc = true
+  // Disable keepStructure (2022-12-22)
+  // if (config.asset.keepStructure) config.asset.useCrc = true
 
   // Force overwrite when emptyOutDir is true
   if (viteConfig.build.emptyOutDir) {

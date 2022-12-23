@@ -67,7 +67,7 @@ describe('build', async () => {
   })
   test('get asset', async () => {
     expect(
-      await fse.readFile(path.join(distdir, 'assets/bar.288b3b53.js'), 'utf-8')
+      await fse.readFile(path.join(distdir, 'assets/bar-6f3c22b9.js'), 'utf-8')
     ).toMatchInlineSnapshot(`
       "console.log(\\"bar\\");
       "
