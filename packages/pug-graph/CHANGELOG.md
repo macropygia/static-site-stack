@@ -1,5 +1,11 @@
 # @macropygia/pug-graph
 
+## 0.0.6
+
+### Patch Changes
+
+- 8eb3c13: Fix getRawData to not include lokijs metadata
+
 ## 0.0.5
 
 ### Patch Changes

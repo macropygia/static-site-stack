@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.16
+
+### Patch Changes
+
+- 1bb49de: Bump dependencies (Add Vite 4 to peerDependencies)
+
 ## 0.0.15
 
 ### Patch Changes
