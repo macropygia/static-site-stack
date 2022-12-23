@@ -87,6 +87,13 @@ describe('preview', () => {
       root: srcdir,
       build: {
         outDir: distdir,
+        rollupOptions: {
+          input: [
+            path.resolve(__dirname, 'src/index.html'),
+            path.resolve(__dirname, 'src/app/index.html'),
+            path.resolve(__dirname, 'src/app/subdir/index.html'),
+          ],
+        },
       },
     })
     server = await preview(defaultConfig(middleware))
