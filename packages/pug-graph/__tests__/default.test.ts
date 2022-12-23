@@ -35,6 +35,7 @@ describe('Single File', () => {
 
 describe('Single File (Recursive)', () => {
   let graph: PugGraph
+  const cwdRe = new RegExp(process.cwd(), 'g')
   beforeAll(async () => {
     graph = new PugGraph({
       baseDir: '__tests__/src',
@@ -43,11 +44,13 @@ describe('Single File (Recursive)', () => {
   })
   test('parse (recursive, insertOnly)', async () => {
     await graph.parse(indexPugAbs, { recursive: true, insertOnly: true })
-    expect(JSON.stringify(graph.getRawData())).toMatchSnapshot()
+    const rawJson = JSON.stringify(graph.getRawData())
+    expect(rawJson.replace(cwdRe, 'cwd')).toMatchSnapshot()
   })
   test('parse (recursive)', async () => {
     await graph.parse(indexPugAbs, { recursive: true })
-    expect(JSON.stringify(graph.getRawData())).toMatchSnapshot()
+    const rawJson = JSON.stringify(graph.getRawData())
+    expect(rawJson.replace(cwdRe, 'cwd')).toMatchSnapshot()
   })
   afterAll(async () => {
     graph.exit()
