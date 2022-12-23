@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-pug-static
 
+## 0.0.18
+
+### Patch Changes
+
+- 1bb49de: Bump dependencies (Add Vite 4 to peerDependencies)
+
 ## 0.0.17
 
 ### Patch Changes

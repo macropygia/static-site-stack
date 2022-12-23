@@ -1,6 +1,6 @@
 {
   "name": "@macropygia/pug-graph",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Parses include and extends in a Pug file and gets dependencies.",
   "author": "macropygia",
   "license": "MIT",

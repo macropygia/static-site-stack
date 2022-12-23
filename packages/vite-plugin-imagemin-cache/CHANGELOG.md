@@ -1,5 +1,13 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.1.2
+
+### Patch Changes
+
+- 1bb49de: Bump dependencies (Add Vite 4 to peerDependencies)
+- dccc74f: Update docs
+- 1bb49de: BREAKING CHANGE: Remove `keepStructure` option for compatibility issues with Rollup 3
+
 ## 0.1.1
 
 ### Patch Changes
