@@ -9,6 +9,7 @@ importers:
       '@types/node': 18.11.17
       '@typescript-eslint/eslint-plugin': ^5.47.0
       '@typescript-eslint/parser': ^5.47.0
+      '@vitest/coverage-c8': ^0.26.2
       axios: ^1.2.1
       c8: ^7.12.0
       eslint: ^8.30.0
@@ -34,6 +35,7 @@ importers:
       '@types/node': 18.11.17
       '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
       '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
+      '@vitest/coverage-c8': 0.26.2
       axios: 1.2.1
       c8: 7.12.0
       eslint: 8.30.0
@@ -1336,6 +1338,28 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.47.0
       eslint-visitor-keys: 3.3.0
+    dev: true
+
+  /@vitest/coverage-c8/0.26.2:
+    resolution:
+      {
+        integrity: sha512-h7RZ7trUUsq+yixiXhBaGboap7pjee+x59HE9rsz/JbY/evJhgk+biLY5lOgjpyUonPN0Ymz3mxlrXW9Da54SQ==,
+      }
+    dependencies:
+      c8: 7.12.0
+      vitest: 0.26.2
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.8.1:
