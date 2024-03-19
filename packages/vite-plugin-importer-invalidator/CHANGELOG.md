@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-importer-invalidator
 
+## 0.0.16
+
+### Patch Changes
+
+- 26f0514: Bump dependencies (Add Vite 5 to peerDependencies)
+
 ## 0.0.15
 
 ### Patch Changes

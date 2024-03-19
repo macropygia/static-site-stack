@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-connect-middlewares
 
+## 0.0.8
+
+### Patch Changes
+
+- 26f0514: Bump dependencies (Add Vite 5 to peerDependencies)
+
 ## 0.0.7
 
 ### Patch Changes
