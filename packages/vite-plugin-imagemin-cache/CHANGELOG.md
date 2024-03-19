@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.1.3
+
+### Patch Changes
+
+- 26f0514: Bump dependencies (Add Vite 5 to peerDependencies)
+
 ## 0.1.2
 
 ### Patch Changes
