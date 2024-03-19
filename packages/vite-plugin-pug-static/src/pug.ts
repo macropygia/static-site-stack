@@ -18,19 +18,17 @@ interface CompiledTemplateWithDeps extends Pug.compileTemplate {
 const reflectAncestorsIntoModuleMap = (
   moduleGraph: ModuleGraph,
   compiledModule: ModuleNode,
-  ancestors: string[]
+  ancestors: string[],
 ) => {
   // Add ancestors in module map
-  const importedModules: Set<ModuleNode> = new Set() // Optional
   ancestors.forEach((ancestor) => {
     const ancestorModules = moduleGraph.getModulesByFile(ancestor)
     const ancestorModule =
       (ancestorModules && [...ancestorModules][0]) ||
       moduleGraph.createFileOnlyEntry(ancestor)
     ancestorModule.importers.add(compiledModule) // ToDo: 依存関係から削除された場合の処理
-    importedModules.add(ancestorModule) // Optional
+    compiledModule.importedModules.add(ancestorModule) // Optional
   })
-  compiledModule.importedModules = importedModules // Optional
 }
 
 /**
@@ -45,7 +43,7 @@ export const compilePug = async (
   url: string,
   pugPath: string,
   options?: Pug.Options,
-  locals?: Pug.LocalsObject
+  locals?: Pug.LocalsObject,
 ): Promise<boolean | Error> => {
   const compiledModule =
     (await moduleGraph.getModuleByUrl(url)) ||
@@ -68,7 +66,7 @@ export const compilePug = async (
   try {
     const compiledTemplate = compileFile(
       pugPath,
-      options
+      options,
     ) as CompiledTemplateWithDeps
 
     // Get ancestors from Pug compiler

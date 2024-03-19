@@ -50,36 +50,36 @@ describe('serve', () => {
   test('get /', async () => {
     await axios.get('http://localhost:5173/').then((res) => {
       expect(res.data).toMatchInlineSnapshot(`
-          "<!DOCTYPE html><html><head>
-            <script type=\\"module\\" src=\\"/@vite/client\\"></script>
-          </head><body><h1>serve</h1><p>partial</p></body></html>"
-        `)
+        "<!DOCTYPE html><html><head>
+          <script type="module" src="/@vite/client"></script>
+        </head><body><h1>serve</h1><p>partial</p></body></html>"
+      `)
     })
   })
   test('get /index.html', async () => {
     await axios.get('http://localhost:5173/index.html').then((res) => {
       expect(res.data).toMatchInlineSnapshot(`
-          "<!DOCTYPE html><html><head>
-            <script type=\\"module\\" src=\\"/@vite/client\\"></script>
-          </head><body><h1>serve</h1><p>partial</p></body></html>"
-        `)
+        "<!DOCTYPE html><html><head>
+          <script type="module" src="/@vite/client"></script>
+        </head><body><h1>serve</h1><p>partial</p></body></html>"
+      `)
     })
   })
   test('get /html/index.html', async () => {
     await axios.get('http://localhost:5173/html/index.html').then((res) => {
       expect(res.data).toMatchInlineSnapshot(`
-          "<!DOCTYPE html>
-          <html>
-          <head>
-            <script type=\\"module\\" src=\\"/@vite/client\\"></script>
+        "<!DOCTYPE html>
+        <html>
+        <head>
+          <script type="module" src="/@vite/client"></script>
 
-          </head>
-          <body>
-          <p>html</p>
-          </body>
-          </html>
-          "
-        `)
+        </head>
+        <body>
+        <p>html</p>
+        </body>
+        </html>
+        "
+      `)
     })
   })
   test('get /nothtml.jpg', async () => {
@@ -118,7 +118,7 @@ describe('serve', () => {
       .then(async (res) => {
         expect(res.data).toMatchInlineSnapshot(`
           "<!DOCTYPE html><html><head>
-            <script type=\\"module\\" src=\\"/@vite/client\\"></script>
+            <script type="module" src="/@vite/client"></script>
           </head><body><h1>serve</h1><p>test</p></body></html>"
         `)
       })

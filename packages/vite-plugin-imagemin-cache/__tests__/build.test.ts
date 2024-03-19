@@ -4,7 +4,7 @@ import fse from 'fs-extra'
 import fg from 'fast-glob'
 import { crc32 } from 'polycrc'
 import picomatch from 'picomatch'
-import { beforeEach, afterAll, test, expect } from 'vitest'
+import { afterAll, test, expect } from 'vitest'
 import { build } from 'vite'
 // import type vite from 'vite'
 
@@ -75,7 +75,7 @@ afterAll(async () => {
 test('default', async () => {
   await build(createConfig({}, defaultPluginConfig))
   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2811407307,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/assets/test.8e95ac79.svg\\":160342448,\\"__tests__/dist/assets/test.c3cde17a.jpg\\":239154759}"'
+    `"{"__tests__/dist/favicon.ico":1843141432,"__tests__/dist/favicon.svg":1900386957,"__tests__/dist/index.html":2206714557,"__tests__/dist/assets/index.CrJmAl_S.css":3207623224,"__tests__/dist/assets/test.BMafBw6k.jpg":239154759,"__tests__/dist/assets/test.DbaL1kKO.svg":160342448}"`,
   )
 })
 
@@ -86,11 +86,11 @@ test('preventDefault / expire (preparing)', async () => {
       createPluginConfig({
         countToExpire: 1,
         public: { preventDefault: true },
-      })
-    )
+      }),
+    ),
   )
   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2811407307,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/assets/test.8e95ac79.svg\\":160342448,\\"__tests__/dist/assets/test.c3cde17a.jpg\\":239154759}"'
+    `"{"__tests__/dist/favicon.ico":1843141432,"__tests__/dist/favicon.svg":1900386957,"__tests__/dist/index.html":2206714557,"__tests__/dist/assets/index.CrJmAl_S.css":3207623224,"__tests__/dist/assets/test.BMafBw6k.jpg":239154759,"__tests__/dist/assets/test.DbaL1kKO.svg":160342448}"`,
   )
 })
 
@@ -101,11 +101,11 @@ test('preventOverwrite / expire (preparing)', async () => {
       createPluginConfig({
         countToExpire: 1,
         asset: { preventOverwrite: true },
-      })
-    )
+      }),
+    ),
   )
   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":2811407307,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/assets/test.8e95ac79.svg\\":160342448,\\"__tests__/dist/assets/test.c3cde17a.jpg\\":239154759}"'
+    `"{"__tests__/dist/favicon.ico":1843141432,"__tests__/dist/favicon.svg":1900386957,"__tests__/dist/index.html":2206714557,"__tests__/dist/assets/index.CrJmAl_S.css":3207623224,"__tests__/dist/assets/test.BMafBw6k.jpg":239154759,"__tests__/dist/assets/test.DbaL1kKO.svg":160342448}"`,
   )
 })
 
@@ -179,11 +179,11 @@ test('assetFileNames without [hash] / exclude with array', async () => {
       },
       createPluginConfig({
         exclude: ['**/*.png'],
-      })
-    )
+      }),
+    ),
   )
   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1900386957,\\"__tests__/dist/index.html\\":1383037182,\\"__tests__/dist/asset/index.css\\":3207623224,\\"__tests__/dist/asset/test.jpg\\":239154759,\\"__tests__/dist/asset/test.svg\\":160342448}"'
+    `"{"__tests__/dist/favicon.ico":1843141432,"__tests__/dist/favicon.svg":1900386957,"__tests__/dist/index.html":2312883622,"__tests__/dist/asset/index.css":3207623224,"__tests__/dist/asset/test.jpg":239154759,"__tests__/dist/asset/test.svg":160342448}"`,
   )
 })
 
@@ -196,11 +196,11 @@ test('exclude with string / nothing to do / preventOverwrite auto off', async ()
         asset: {
           preventOverwrite: true,
         },
-      })
-    )
+      }),
+    ),
   )
   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1118345576,\\"__tests__/dist/index.html\\":2811407307,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/assets/test.8e95ac79.svg\\":3600371036,\\"__tests__/dist/assets/test.c3cde17a.jpg\\":3570719741}"'
+    `"{"__tests__/dist/favicon.ico":1843141432,"__tests__/dist/favicon.svg":1118345576,"__tests__/dist/index.html":2206714557,"__tests__/dist/assets/index.CrJmAl_S.css":3207623224,"__tests__/dist/assets/test.BMafBw6k.jpg":3570719741,"__tests__/dist/assets/test.DbaL1kKO.svg":3600371036}"`,
   )
 })
 
@@ -210,10 +210,10 @@ test('exclude with matcher', async () => {
       {},
       createPluginConfig({
         exclude: picomatch('**/*'),
-      })
-    )
+      }),
+    ),
   )
   expect(JSON.stringify(getFileList('__tests__/dist'))).toMatchInlineSnapshot(
-    '"{\\"__tests__/dist/favicon.ico\\":1843141432,\\"__tests__/dist/favicon.svg\\":1118345576,\\"__tests__/dist/index.html\\":2811407307,\\"__tests__/dist/assets/index.28a21df5.css\\":3207623224,\\"__tests__/dist/assets/test.8e95ac79.svg\\":3600371036,\\"__tests__/dist/assets/test.c3cde17a.jpg\\":3570719741}"'
+    `"{"__tests__/dist/favicon.ico":1843141432,"__tests__/dist/favicon.svg":1118345576,"__tests__/dist/index.html":2206714557,"__tests__/dist/assets/index.CrJmAl_S.css":3207623224,"__tests__/dist/assets/test.BMafBw6k.jpg":3570719741,"__tests__/dist/assets/test.DbaL1kKO.svg":3600371036}"`,
   )
 })

@@ -46,9 +46,9 @@ afterAll(async () => {
 describe('build', async () => {
   test('get root', async () => {
     expect(
-      await fse.readFile(path.join(distdir, 'index.html'), 'utf-8')
+      await fse.readFile(path.join(distdir, 'index.html'), 'utf-8'),
     ).toMatchInlineSnapshot(
-      '"<!DOCTYPE html><html><head></head><body><h1>build</h1><p>partial</p></body></html>"'
+      '"<!DOCTYPE html><html><head></head><body><h1>build</h1><p>partial</p></body></html>"',
     )
   })
   test('get subdir', async () => {
@@ -67,9 +67,9 @@ describe('build', async () => {
   })
   test('get asset', async () => {
     expect(
-      await fse.readFile(path.join(distdir, 'assets/bar-6f3c22b9.js'), 'utf-8')
+      await fse.readFile(path.join(distdir, 'assets/bar-DMsHf7Lx.js'), 'utf-8'),
     ).toMatchInlineSnapshot(`
-      "console.log(\\"bar\\");
+      "console.log("bar");
       "
     `)
   })

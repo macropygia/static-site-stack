@@ -45,7 +45,7 @@ describe('dev', () => {
       defaultConfig({
         dev: middleware,
         preview: middleware,
-      })
+      }),
     )
     await server.listen()
     server.printUrls()
@@ -54,7 +54,7 @@ describe('dev', () => {
     await axios.get('http://localhost:5173/index.html').then((res) => {
       expect(res.data).toMatchInlineSnapshot(`
         "<!DOCTYPE html><html><head>
-          <script type=\\"module\\" src=\\"/@vite/client\\"></script>
+          <script type="module" src="/@vite/client"></script>
         </head><body><p>/index.html</p></body></html>
         "
       `)
@@ -64,7 +64,7 @@ describe('dev', () => {
     await axios.get('http://localhost:5173/app/subdir/').then((res) => {
       expect(res.data).toMatchInlineSnapshot(`
         "<!DOCTYPE html><html><head>
-          <script type=\\"module\\" src=\\"/@vite/client\\"></script>
+          <script type="module" src="/@vite/client"></script>
         </head><body><p>/app/index.html</p></body></html>
         "
       `)
