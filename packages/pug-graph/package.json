@@ -45,7 +45,7 @@
     "lokijs": "^1.5.12"
   },
   "devDependencies": {
-    "@types/lokijs": "^1.5.7",
-    "fast-glob": "^3.2.12"
+    "@types/lokijs": "^1.5.14",
+    "fast-glob": "^3.3.2"
   }
 }

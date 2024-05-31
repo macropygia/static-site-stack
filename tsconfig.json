@@ -5,7 +5,6 @@
   ],
   "compilerOptions": {
     "lib": ["esnext"],
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "declaration": true,
     "noEmitOnError": true,

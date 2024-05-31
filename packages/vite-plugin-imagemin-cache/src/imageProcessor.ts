@@ -15,6 +15,9 @@ async function imageProcessor(settings: ImageminSettings, buffer: Buffer) {
     plugins.push(imageminOptipng(settings.optipng))
   if (settings.mozjpeg !== false)
     plugins.push(imageminMozjpeg(settings.mozjpeg))
+  // NOTE: Wait for imagemin-svgo v11.x to be fixed
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   if (settings.svgo !== false) plugins.push(imageminSvgo(settings.svgo))
   // if (settings.webp !== false) plugins.push(imageminWebp(settings.webp))
 
