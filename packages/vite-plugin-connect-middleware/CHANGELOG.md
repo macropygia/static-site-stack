@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-connect-middlewares
 
+## 0.0.9
+
+### Patch Changes
+
+- b2c3b3f: Bump dependencies
+
 ## 0.0.8
 
 ### Patch Changes

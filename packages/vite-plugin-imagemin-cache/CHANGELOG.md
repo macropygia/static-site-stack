@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-imagemin-cache
 
+## 0.1.4
+
+### Patch Changes
+
+- b2c3b3f: Bump dependencies
+
 ## 0.1.3
 
 ### Patch Changes

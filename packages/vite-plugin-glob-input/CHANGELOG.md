@@ -1,5 +1,11 @@
 # @macropygia/vite-plugin-glob-input
 
+## 0.0.18
+
+### Patch Changes
+
+- b2c3b3f: Bump dependencies
+
 ## 0.0.17
 
 ### Patch Changes
