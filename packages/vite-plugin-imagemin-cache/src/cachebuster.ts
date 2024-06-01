@@ -14,7 +14,7 @@ export function cachebuster(code: string, prefix: string | true): string {
     const replacementString = `__VITE_ASSET__${hash}__$_${updatePostfix(
       postfix,
       typeof prefix === 'string' ? prefix : '?',
-      hash!
+      hash!,
     )}__`
     s.overwrite(match.index, match.index + full!.length, replacementString, {
       contentOnly: true,

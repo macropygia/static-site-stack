@@ -65,22 +65,22 @@ describe('Multiple Files', () => {
     })
     const files = fg.sync('__tests__/src/**/*.pug')
     await Promise.all(
-      files.map((file) => graph.parse(file, { insertOnly: true }))
+      files.map((file) => graph.parse(file, { insertOnly: true })),
     )
   })
   test('getImportedFiles', async () => {
     expect(
-      JSON.stringify([...graph.getImportedFiles(indexPug)])
+      JSON.stringify([...graph.getImportedFiles(indexPug)]),
     ).toMatchSnapshot()
   })
   test('getImporters', async () => {
     expect(
-      JSON.stringify([...graph.getImporters(templatePug)])
+      JSON.stringify([...graph.getImporters(templatePug)]),
     ).toMatchSnapshot()
   })
   test('getImporters (ignorePartial)', async () => {
     expect(
-      JSON.stringify([...graph.getImporters(templatePug, true)])
+      JSON.stringify([...graph.getImporters(templatePug, true)]),
     ).toMatchSnapshot()
   })
   test('getRawData', async () => {

@@ -9,7 +9,7 @@ import { imageProcessor } from './imageProcessor.js'
 
 export async function processAssetWithoutHash(
   ctx: Context,
-  bundle: Rollup.OutputBundle
+  bundle: Rollup.OutputBundle,
 ) {
   // Add files to compressing queue
   const queue = [...ctx.assetTargets].map(async (fileName) => {
@@ -32,9 +32,8 @@ export async function processAssetWithoutHash(
         cacheData.checksum === checksum && // Checksum match
         fse.existsSync(cachePath) // File exists
       ) {
-        ;(bundle[fileName] as Rollup.OutputAsset).source = await fse.readFile(
-          cachePath
-        )
+        ;(bundle[fileName] as Rollup.OutputAsset).source =
+          await fse.readFile(cachePath)
         ctx.outputLog('info', 'cache hit:', fileName)
         return
       } else {
@@ -51,7 +50,7 @@ export async function processAssetWithoutHash(
           'info',
           'compressed:',
           fileName,
-          `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
+          `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`,
         )
       }
     })

@@ -8,7 +8,7 @@ import type { Context } from './types.js'
 
 export function setupRollupOptionsForKeepStructure(
   ctx: Context,
-  config: UserConfig
+  config: UserConfig,
 ): UserConfig {
   const root = getResolvedRoot(config.root)
   let defaultAssetFileNames = 'assets/[name].[hash].[ext]' // Same as Vite

@@ -22,7 +22,7 @@ const defaultSettings: Settings = {
 }
 
 const initMatcher = (
-  pattern: Picomatch.Glob | Picomatch.Matcher | undefined
+  pattern: Picomatch.Glob | Picomatch.Matcher | undefined,
 ): Picomatch.Matcher | null => {
   if (pattern === undefined) return null
   if (typeof pattern === 'string' || Array.isArray(pattern))

@@ -69,7 +69,7 @@ export function initContext(config: Settings): Context {
     cacheDb: new CacheDb(
       path.join(config.cacheDir, 'cache.db'),
       config.expireDuration,
-      config.countToExpire
+      config.countToExpire,
     ),
     excludeMatcher: initMatcher(config.exclude),
     targetExtentions: new Set(),
@@ -92,7 +92,7 @@ export function initContext(config: Settings): Context {
 export function updateViteUserConfig(
   ctx: Context,
   config: Settings,
-  viteUserConfig: UserConfig
+  viteUserConfig: UserConfig,
 ) {
   const root = getResolvedRoot(viteUserConfig.root)
   ctx.publicDir = getResolvedPublicDir(viteUserConfig.publicDir, root)

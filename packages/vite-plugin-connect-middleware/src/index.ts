@@ -5,7 +5,7 @@ import type { Connect, Plugin } from 'vite'
 export type Middleware = (
   req: Connect.IncomingMessage,
   res: http.ServerResponse,
-  next: Connect.NextFunction
+  next: Connect.NextFunction,
 ) => void | http.ServerResponse | Promise<void | http.ServerResponse>
 
 export type Settings =

@@ -37,7 +37,7 @@ const convertFilesToInput = (
   settings: Settings,
   config: ResolvedConfig,
   input: Record<string, string>,
-  targetFiles: string[]
+  targetFiles: string[],
 ): Record<string, string> => {
   targetFiles.forEach((targetFile) => {
     const parsedRelPath = path.parse(path.relative(config.root, targetFile))
@@ -100,7 +100,7 @@ const vitePluginGlobInput = (userSettings: UserSettings): Plugin => {
           settings,
           config,
           input,
-          targetFiles
+          targetFiles,
         )
 
       return options

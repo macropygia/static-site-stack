@@ -55,7 +55,7 @@ export interface Context {
     type: 'info' | 'warn' | 'warnOnce' | 'error',
     green?: string,
     yellow?: string,
-    dim?: string
+    dim?: string,
   ) => void
   publicDir: string
   limit: LimitFunction

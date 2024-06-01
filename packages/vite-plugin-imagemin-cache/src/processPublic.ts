@@ -14,19 +14,19 @@ const getTargets = (ctx: Context): Set<string> => {
       (ext) =>
         `${path
           .relative(process.cwd(), ctx.publicDir)
-          .replaceAll(path.sep, '/')}/**/*${ext}`
-    )
+          .replaceAll(path.sep, '/')}/**/*${ext}`,
+    ),
   )
   // Convert cwd relative path to root relative path
   return new Set(
     fgResults.flatMap((relPath) => {
       const fileName = path.relative(
         ctx.publicDir,
-        path.join(process.cwd(), relPath)
+        path.join(process.cwd(), relPath),
       )
       if (ctx.excludeMatcher && ctx.excludeMatcher(fileName)) return []
       return fileName
-    })
+    }),
   )
 }
 
@@ -82,7 +82,7 @@ export async function processPublic(ctx: Context, viteConfig: ResolvedConfig) {
         'info',
         'compressed:',
         fileName,
-        `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
+        `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`,
       )
     })
   })

@@ -188,7 +188,7 @@ class PugGraph {
     filepath: string,
     sliceSize = 100,
     encoding: BufferEncoding = 'utf8',
-    linefeed = '\n'
+    linefeed = '\n',
   ): Promise<Set<string>> {
     const readStream = createReadStream(filepath, { encoding })
     // 未処理文字列バッファ
@@ -208,7 +208,7 @@ class PugGraph {
         // コメント判定のために順序の保証が必要
         Object.assign(
           accumulator,
-          this.#parseLines(filepath, lines.splice(0, sliceSize), accumulator)
+          this.#parseLines(filepath, lines.splice(0, sliceSize), accumulator),
         )
       }
     }
@@ -226,7 +226,7 @@ class PugGraph {
   #parseLines(
     filepath: string,
     lines: string[],
-    accumulator: ParseLinesAccumulator
+    accumulator: ParseLinesAccumulator,
   ): ParseLinesAccumulator {
     // ループバック展開
     const { deps } = accumulator
@@ -286,7 +286,7 @@ class PugGraph {
     settings: Partial<ParseSettigs> = {
       recursive: false,
       insertOnly: false,
-    }
+    },
   ) {
     // HTMLやSVGを読み込んで更に依存関係が続いている場合もあるが
     // 現時点ではパーサを組み込んでいないためスキップ
@@ -308,7 +308,7 @@ class PugGraph {
           if (!settings.updateDescendants && this.#existsRecord(dep))
             return null
           return this.parse(dep, settings)
-        })
+        }),
       )
     }
   }
@@ -323,7 +323,7 @@ class PugGraph {
    */
   getImportedFiles(
     filepath: string,
-    importedFiles: Set<string> = new Set()
+    importedFiles: Set<string> = new Set(),
   ): Set<string> {
     const result: DepsResult | null = this.#deps.findOne({ path: filepath })
     if (result && result.deps.length > 0) {
@@ -348,7 +348,7 @@ class PugGraph {
   getImporters(
     filepath: string,
     ignorePartial = false,
-    importers: Set<string> = new Set()
+    importers: Set<string> = new Set(),
   ): Set<string> {
     const result: DepsRecord[] = this.#deps.find({
       deps: { $contains: filepath },

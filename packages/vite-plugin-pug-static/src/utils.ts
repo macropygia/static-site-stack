@@ -7,12 +7,12 @@ export function outputLog(
   type: 'info' | 'warn' | 'warnOnce' | 'error',
   green?: string,
   yellow?: string,
-  dim?: string
+  dim?: string,
 ) {
   return logger[type](
     ansis.cyanBright('[pug-static]') +
       (green ? ansis.green(` ${green}`) : '') +
       (yellow ? ansis.yellow(` ${yellow}`) : '') +
-      (dim ? ansis.dim(` ${dim}`) : '')
+      (dim ? ansis.dim(` ${dim}`) : ''),
   )
 }

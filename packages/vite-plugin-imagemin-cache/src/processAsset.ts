@@ -10,7 +10,7 @@ import { imageProcessor } from './imageProcessor.js'
 export async function processAsset(
   ctx: Context,
   viteConfig: ResolvedConfig,
-  bundle: Rollup.OutputBundle
+  bundle: Rollup.OutputBundle,
 ) {
   // Add files to compressing queue
   const queue = [...ctx.assetTargets].map(async (fileName) => {
@@ -33,9 +33,8 @@ export async function processAsset(
 
       // Use cache if it exists
       if (fse.existsSync(cachePath)) {
-        ;(bundle[fileName] as Rollup.OutputAsset).source = await fse.readFile(
-          cachePath
-        )
+        ;(bundle[fileName] as Rollup.OutputAsset).source =
+          await fse.readFile(cachePath)
         ctx.outputLog('info', 'cache hit:', fileName)
         return
       }
@@ -57,7 +56,7 @@ export async function processAsset(
         'info',
         'compressed:',
         fileName,
-        `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`
+        `(processing: ${ctx.limit.activeCount.toString()}, pending: ${ctx.limit.pendingCount.toString()})`,
       )
     })
   })

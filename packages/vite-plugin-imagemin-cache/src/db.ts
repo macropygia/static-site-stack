@@ -35,7 +35,7 @@ class CacheDb {
       (obj: CacheDocument) => {
         obj.expirationCountdown = obj.expirationCountdown - 1
         return obj
-      }
+      },
     )
   }
 
@@ -52,7 +52,7 @@ class CacheDb {
         obj.expirationCountdown = this.#countToExpire
         obj.lastProcessed = now
         return obj
-      }
+      },
     )
   }
 
@@ -94,7 +94,7 @@ class CacheDb {
   upsertPublic(
     fileName: string,
     checksum: number,
-    now: number = new Date().getTime()
+    now: number = new Date().getTime(),
   ) {
     const result = this.#coll.findOne({ fileName })
     if (result) {

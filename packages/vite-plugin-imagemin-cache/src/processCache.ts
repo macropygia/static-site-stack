@@ -27,7 +27,7 @@ export async function processCache(ctx: Context, now: number) {
   await Promise.all(
     expiredFiles.map((file): Promise<void> => {
       return fse.remove(path.join(config.cacheDir, file.fileName))
-    })
+    }),
   )
   cacheDb.removeExpired(now)
 

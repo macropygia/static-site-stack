@@ -45,7 +45,7 @@ export const vitePluginPugBuild = (settings: BuildSettings): Plugin => {
           outputLog(
             'info',
             'compiled:',
-            path.relative(process.cwd(), pathMap.get(id)!)
+            path.relative(process.cwd(), pathMap.get(id)!),
           )
           return html
         }

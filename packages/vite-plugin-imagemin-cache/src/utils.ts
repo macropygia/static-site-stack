@@ -9,7 +9,7 @@ import ansis from 'ansis'
 const logger = createLogger()
 
 export function initMatcher(
-  pattern: Picomatch.Glob | Picomatch.Matcher | undefined
+  pattern: Picomatch.Glob | Picomatch.Matcher | undefined,
 ): Picomatch.Matcher | false {
   if (pattern === undefined) return false
   if (typeof pattern === 'string' || Array.isArray(pattern))
@@ -21,13 +21,13 @@ export function outputLog(
   type: 'info' | 'warn' | 'warnOnce' | 'error',
   green?: string,
   yellow?: string,
-  dim?: string
+  dim?: string,
 ) {
   return logger[type](
     ansis.cyanBright('[imagemin-cache]') +
       (green ? ansis.green(` ${green}`) : '') +
       (yellow ? ansis.yellow(` ${yellow}`) : '') +
-      (dim ? ansis.dim(` ${dim}`) : '')
+      (dim ? ansis.dim(` ${dim}`) : ''),
   )
 }
 
@@ -54,12 +54,12 @@ export function getResolvedRoot(root: string | undefined) {
 // https://github.com/vitejs/vite/blob/b9511f1ed8e36a618214944c69e2de6504ebcb3c/packages/vite/src/node/config.ts#L587-L593
 export function getResolvedPublicDir(
   publicDir: string | false | undefined,
-  resolvedRoot: string
+  resolvedRoot: string,
 ) {
   return publicDir !== false && publicDir !== ''
     ? path.resolve(
         resolvedRoot,
-        typeof publicDir === 'string' ? publicDir : 'public'
+        typeof publicDir === 'string' ? publicDir : 'public',
       )
     : ''
 }

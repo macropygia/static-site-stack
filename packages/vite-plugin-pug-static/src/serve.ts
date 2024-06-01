@@ -27,12 +27,12 @@ interface ServeSettings {
 export type Middleware = (
   req: Connect.IncomingMessage,
   res: http.ServerResponse,
-  next: Connect.NextFunction
+  next: Connect.NextFunction,
 ) => void | http.ServerResponse | Promise<void | http.ServerResponse>
 
 const middleware = (
   settings: ServeSettings,
-  server: ViteDevServer
+  server: ViteDevServer,
 ): Middleware => {
   const { options, locals, ignorePattern } = settings
   const ignoreMatcher = ignorePattern ? picomatch(ignorePattern) : null
@@ -52,7 +52,7 @@ const middleware = (
     const reqAbsPath = path.posix.join(
       server.config.root,
       url,
-      url.endsWith('/') ? 'index.html' : ''
+      url.endsWith('/') ? 'index.html' : '',
     )
 
     const parsedReqAbsPath = path.posix.parse(reqAbsPath)
@@ -75,7 +75,7 @@ const middleware = (
       url,
       pugAbsPath,
       options,
-      locals
+      locals,
     )
 
     // Pug compile error
